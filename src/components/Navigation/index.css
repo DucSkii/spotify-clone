@@ -6,8 +6,10 @@
   width: 100%;
   max-width: 235px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   border-radius:  7px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .navigation:hover {
