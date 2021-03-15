@@ -3,6 +3,16 @@
   place-items: center;
   height: 100vh;
   background-color: black;
+  max-width: 600px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
 }
 
 .login > img {

@@ -6,12 +6,14 @@ import spotifyLogo from '../../images/spotifyLogo.jpg'
 const Login = () => {
 
   return (
-    <div className='login'>
-      <img
-        src={spotifyLogo}
-        alt='Spotify Logo'
-      />
-      <LoginButton />
+    <div className='login-container'>
+      <div className='login'>
+        <img
+          src={spotifyLogo}
+          alt='Spotify Logo'
+        />
+        <LoginButton />
+      </div>
     </div>
   )
 }
