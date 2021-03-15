@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Login from './pages/Login'
 import { getTokenFromUrl } from './spotify'
 import SpotifyWebApi from 'spotify-web-api-js'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser } from './redux/ducks/userReducer'
 
-const spotify = new SpotifyWebApi()
+const s = new SpotifyWebApi()
 
 const App = () => {
 
   const [token, setToken] = useState(null)
+
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -17,12 +22,14 @@ const App = () => {
 
     if (_token) {
       setToken(_token)
-      spotify.setAccessToken(_token)
-      spotify.getMe().then((user) => {
-        console.log(user)
+      s.setAccessToken(_token)
+      s.getMe().then((user) => {
+        dispatch(setUser(user))
       })
     }
-  }, [])
+  }, [dispatch])
+
+  console.log(user)
 
   return (
     <div className="App">
