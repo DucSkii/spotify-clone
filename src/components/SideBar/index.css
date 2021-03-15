@@ -1,0 +1,10 @@
+.sideBar {
+  height: 100vh;
+  background-color: #040404;
+  width: 235px;
+}
+
+.sideBar > img {
+  width: 70%;
+  padding: 10px 15px;
+}

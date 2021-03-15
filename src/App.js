@@ -1,39 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Login from './pages/Login'
-import { getTokenFromUrl } from './spotify'
+import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
+import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from './redux/ducks/userReducer'
+import { setUser, setToken, setTopArtists, setPlaylists, setSpotify } from './redux/ducks/userReducer'
 
 const s = new SpotifyWebApi()
 
 const App = () => {
 
-  const [token, setToken] = useState(null)
-
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user.user)
+  const token = useSelector(state => state.user.token)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
     window.location.hash = ''
-
-    const _token = hash.access_token
+    let _token = hash.access_token
 
     if (_token) {
-      setToken(_token)
       s.setAccessToken(_token)
+
+      dispatch(setToken(_token))
+
+      dispatch(setSpotify(s))
+
       s.getMe().then((user) => {
         dispatch(setUser(user))
       })
-    }
-  }, [dispatch])
 
-  console.log(user)
+      s.getMyTopArtists().then((response) => {
+        dispatch(setTopArtists(response))
+      })
+
+      s.getUserPlaylists().then((playlists) => {
+        dispatch(setPlaylists(playlists))
+      })
+    }
+  }, [token, dispatch])
 
   return (
     <div className="App">
-      {token ? <h1>Logged in</h1> : <Login />}
+      {token ? <Player spotify={s} /> : <Login />}
     </div>
   )
 }

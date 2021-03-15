@@ -6,7 +6,9 @@ const initialState = {
   top_artists: null,
   playing: false,
   item: null,
-  token: null,
+  // Remove after developing
+  // token: null,
+  token: 'BQBgUDpJPl3BTCOdYP4He2LoL1UAvVOX28PRD-8HLWUFKNbW1EE8m0pdbMxmxNEjCF1N7tPQ62bw80eIr6g1vDqEVROXmMnK6sA4zVl-Jv9Drf1gLtVWOSN9hYJkAWV_FUX8uUSsz5Jvg27fUwCewKv3c1lgoK3_',
 }
 
 export const setUser = (user) => {
