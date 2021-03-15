@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import spotifyLogo from '../../images/spotifyLogo.jpg'
 import Navigation from '../Navigation'
 
@@ -13,15 +14,19 @@ const SideBar = (props) => {
       )
     }
     return (
-      <Navigation route={navigation} />
+      <Link to={navigation === 'Home' ? '/' : `/${navigation}`} style={{ textDecoration: 'none' }}>
+        <Navigation route={navigation} />
+      </Link>
     )
   }
 
   return (
     <div className='sideBar'>
-      <div className='sideBar-logo'>
-        <img src={spotifyLogo} alt='Spotify Logo' />
-      </div>
+      <Link to='/'>
+        <div className='sideBar-logo'>
+          <img src={spotifyLogo} alt='Spotify Logo' />
+        </div>
+      </Link>
       <div className='sideBar-navigation'>
         {renderNavigation('Home')}
         {renderNavigation('Search')}

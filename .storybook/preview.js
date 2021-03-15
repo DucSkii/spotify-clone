@@ -1,6 +1,7 @@
 import React from 'react'
 import SpotifyFont from '../src/utils/SpotifyFont'
 import Center from '../src/utils/Center'
+import { BrowserRouter } from 'react-router-dom'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,10 +9,12 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <SpotifyFont>
-      <Center>
-        <Story />
-      </Center>
-    </SpotifyFont>
+    <BrowserRouter>
+      <SpotifyFont>
+        <Center>
+          <Story />
+        </Center>
+      </SpotifyFont>
+    </BrowserRouter>
   )
 ]
