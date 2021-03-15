@@ -4,7 +4,12 @@
   width: 235px;
 }
 
-.sideBar > img {
+.sideBar-logo {
+  width: 100%;
+  cursor: pointer;
+}
+
+.sideBar-logo > img {
   width: 70%;
   padding: 10px 15px;
 }
@@ -19,7 +24,6 @@
   font-size: 12px;
   color: grey;
   user-select: none;
-  cursor: pointer;
 }
 
 .sideBar-playlists-item:hover {
@@ -35,6 +39,7 @@
 }
 
 .sideBar-playlists-item {
+  cursor: pointer;
   padding: 10px 0px;
 }
 
@@ -42,5 +47,5 @@
   width: 100%;
   height: 2px;
   background-color: rgb(38, 38, 38);
-  margin-bottom: 10px;
+  margin: 10px 0px;
 }

@@ -19,7 +19,9 @@ const SideBar = (props) => {
 
   return (
     <div className='sideBar'>
-      <img src={spotifyLogo} alt='Spotify Logo' />
+      <div className='sideBar-logo'>
+        <img src={spotifyLogo} alt='Spotify Logo' />
+      </div>
       <div className='sideBar-navigation'>
         {renderNavigation('Home')}
         {renderNavigation('Search')}
