@@ -1,5 +1,6 @@
 import React from 'react'
 import SpotifyFont from '../src/utils/SpotifyFont'
+import Center from '../src/utils/Center'
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,7 +9,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <SpotifyFont>
-      <Story />
+      <Center>
+        <Story />
+      </Center>
     </SpotifyFont>
   )
 ]

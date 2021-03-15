@@ -1,6 +1,7 @@
 import React from 'react'
+import { accessUrl } from '../../spotify'
 import './index.css'
 
-const LoginButton = () => <a className='loginButton' href='http://localhost:3000'>LOGIN WITH SPOTIFY</a>
+const LoginButton = () => <a href={accessUrl} className='loginButton'>LOGIN WITH SPOTIFY</a>
 
 export default LoginButton
