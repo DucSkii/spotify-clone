@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route, useLocation } from 'react-router-dom'
+import Header from '../../components/Header'
 import SideBar from '../../components/SideBar'
 import Home from '../Home'
 import Search from '../Search'
@@ -19,6 +20,7 @@ const Player = ({ s }) => {
   return (
     <div className='player'>
       <SideBar pathname={pathname} />
+      <Header />
       <div />
       <Switch>
         <Route path='/Search' component={Search} />
