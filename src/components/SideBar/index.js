@@ -24,7 +24,7 @@ const SideBar = (props) => {
     <div className='sideBar'>
       <Link to='/'>
         <div className='sideBar-logo'>
-          <img src={spotifyLogo} alt='Spotify Logo' />
+          <img src={spotifyLogo} alt='Spotify Logo' draggable='false' />
         </div>
       </Link>
       <div className='sideBar-navigation'>

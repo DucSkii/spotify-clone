@@ -11,6 +11,7 @@ const Login = () => {
         <img
           src={spotifyLogo}
           alt='Spotify Logo'
+          draggable='false'
         />
         <LoginButton />
       </div>
