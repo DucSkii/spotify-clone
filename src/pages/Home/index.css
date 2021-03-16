@@ -1,5 +1,5 @@
 .home {
-  height: 100vh;
+  height: 100%;
   width: calc(100vw - 232.86px);
   display: flex;
   justify-content: center;
@@ -15,6 +15,19 @@
 }
 
 .home-content {
+  border: 1px solid yellow;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: transparent;
+  color: white;
   margin-top: 60px;
   z-index: 10;
+}
+
+.home-content > h1 {
+  padding: 25px 28px;
+  font-size: 31px;
 }
