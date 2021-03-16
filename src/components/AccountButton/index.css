@@ -1,0 +1,61 @@
+.accountButton {
+  background-color: #0e0e0e;
+  color: white;
+  width: 150px;
+  height: 35px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 3px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.accountButton-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.accountButton:hover {
+  background-color: rgb(63, 63, 63);
+}
+
+.accountIcon {
+  background-color: rgb(72, 72, 72);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.account-user {
+  display: flex;
+  align-items: center;
+}
+
+.account-user > p {
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 10px;
+  max-width: 82px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.selected { 
+  background-color: rgb(63, 63, 63);
+}
+
+.dropdown {
+  width: 165px;
+  border-radius: 5px;
+  background-color: rgb(63, 63, 63);
+  margin-top: 8px;
+  padding: 5px;
+}
