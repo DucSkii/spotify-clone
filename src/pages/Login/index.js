@@ -12,6 +12,7 @@ const Login = () => {
           src={spotifyLogo}
           alt='Spotify Logo'
           draggable='false'
+          style={{ userSelect: 'none' }}
         />
         <LoginButton />
       </div>

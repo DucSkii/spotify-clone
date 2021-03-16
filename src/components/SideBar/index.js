@@ -24,7 +24,7 @@ const SideBar = (props) => {
     <div className='sideBar'>
       <Link to='/'>
         <div className='sideBar-logo'>
-          <img src={spotifyLogo} alt='Spotify Logo' draggable='false' />
+          <img src={spotifyLogo} alt='Spotify Logo' draggable='false' style={{ userSelect: 'none' }} />
         </div>
       </Link>
       <div className='sideBar-navigation'>
