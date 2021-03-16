@@ -1,11 +1,11 @@
 import React from 'react'
 import './index.css'
 
-const DropdownOptions = () => {
+const DropdownOptions = ({text}) => {
 
   return (
-    <div className='dropdownOptions'>
-      <p>Log out</p>
+    <div className='dropdownOptions' id='accountButton'>
+      <p>{text}</p>
     </div>
   )
 }

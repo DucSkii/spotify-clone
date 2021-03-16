@@ -48,14 +48,14 @@
   margin-right: 5px;
 }
 
-.selected { 
-  background-color: rgb(63, 63, 63);
+.selected-accountButton { 
+  background-color: rgb(51, 51, 51);
 }
 
 .dropdown {
   width: 165px;
   border-radius: 5px;
-  background-color: rgb(63, 63, 63);
+  background-color: rgb(51, 51, 51);
   margin-top: 8px;
   padding: 5px;
 }

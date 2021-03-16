@@ -4,10 +4,19 @@
   background-color: rgba(69,23,3,1);
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 50;
+}
+
+.header-accountButton {
+  margin-right: 30px;
+}
+
+.header-accountButton-open {
+  margin-right: 30px;
+  margin-top: 53px;
 }

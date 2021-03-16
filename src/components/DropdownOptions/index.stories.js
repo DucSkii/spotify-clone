@@ -7,4 +7,4 @@ export default {
   component: DropdownOptions,
 }
 
-export const Default = () => <DropdownOptions />
+export const Default = () => <DropdownOptions text='Log out' />

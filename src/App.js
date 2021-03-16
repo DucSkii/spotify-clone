@@ -5,6 +5,7 @@ import SpotifyWebApi from 'spotify-web-api-js'
 import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser, setToken, setTopArtists, setPlaylists, setSpotify } from './redux/ducks/userReducer'
+import { closeDropdown } from './redux/ducks/dropdownReducer'
 
 const s = new SpotifyWebApi()
 
@@ -39,8 +40,15 @@ const App = () => {
     }
   }, [token, dispatch])
 
+  const toggleDropdown = (e) => {
+    if (e.target.parentNode.id) {
+      return null
+    }
+    dispatch(closeDropdown())
+  }
+
   return (
-    <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }}>
+    <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={toggleDropdown}>
       {token ? <Player spotify={s} /> : <Login />}
     </div>
   )
