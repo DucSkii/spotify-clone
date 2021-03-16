@@ -35,7 +35,7 @@ const AccountButton = () => {
       </div>
       {open &&
         <div className='dropdown' id='accountButton'>
-          <DropdownOptions text='Log out' />
+          <DropdownOptions text='Log out' logout={true} />
         </div>
       }
     </div>
