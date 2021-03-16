@@ -1,9 +1,11 @@
 import React from 'react'
 
+import './index.css'
+
 const YourLibrary = () => {
 
   return (
-    <div>
+    <div className='yourlibrary'>
       <h1>YOUR LIBRARY</h1>
     </div>
   )

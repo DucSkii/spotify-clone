@@ -1,7 +1,10 @@
 .sideBar {
   height: 100vh;
   background-color: #040404;
-  width: 235px;
+  min-width: 232.86px;
+  max-width: 232.86px;
+  position: fixed;
+  z-index: 100;
 }
 
 .sideBar-logo {

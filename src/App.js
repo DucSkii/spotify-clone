@@ -40,7 +40,7 @@ const App = () => {
   }, [token, dispatch])
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }}>
       {token ? <Player spotify={s} /> : <Login />}
     </div>
   )

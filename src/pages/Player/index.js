@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Switch, Route, Link, useLocation, matchPath } from 'react-router-dom'
+import { Switch, Route, useLocation } from 'react-router-dom'
 import SideBar from '../../components/SideBar'
 import Home from '../Home'
 import Search from '../Search'
@@ -17,8 +17,9 @@ const Player = ({ s }) => {
   }, [location.pathname])
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className='player'>
       <SideBar pathname={pathname} />
+      <div />
       <Switch>
         <Route path='/Search' component={Search} />
         <Route path='/Your Library' component={YourLibrary} />

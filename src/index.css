@@ -2,3 +2,7 @@
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
 }
+
+body {
+  overflow-y: overlay;
+}
