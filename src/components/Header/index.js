@@ -21,7 +21,7 @@ const Header = () => {
     <div className='header'>
       <div className='header-colour' style={style} />
       <div className={open ? 'header-accountButton-open' : 'header-accountButton'} >
-        <AccountButton />
+        <AccountButton username='ducvietdao' />
       </div>
     </div>
   )

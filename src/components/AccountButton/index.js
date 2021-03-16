@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import './index.css'
 
-const AccountButton = () => {
+const AccountButton = (props) => {
 
   const dispatch = useDispatch()
   const open = useSelector(state => state.dropdown.open)
@@ -23,7 +23,7 @@ const AccountButton = () => {
           <div className='accountIcon'>
 
           </div>
-          <p >ducvietdao</p>
+          <p>{props.username}</p>
         </div>
         <div className='arrow' id='accountButton'>
           {open ? (

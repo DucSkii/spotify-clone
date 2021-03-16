@@ -7,4 +7,4 @@ export default {
   component: AccountButton,
 }
 
-export const Default = () => <AccountButton />
+export const Default = () => <AccountButton username='testName' />
