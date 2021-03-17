@@ -16,7 +16,7 @@ import './index.css'
 const Footer = () => {
 
   return (
-    <>
+    <div className='footer-container'>
       <div className='footer'>
         <div className='footer-song'>
           <Song
@@ -34,7 +34,7 @@ const Footer = () => {
       <div className='footer-control'>
         CONTROLSsssssssssssssssssssssssssssssssssssssssssssssssss
       </div>
-    </>
+    </div>
   )
 }
 
