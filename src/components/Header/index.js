@@ -6,7 +6,7 @@ import './index.css'
 
 const Header = () => {
 
-  const open = useSelector(state => state.dropdown.open)
+  const open = useSelector(state => state.general.open)
   const [style, setStyle] = useState({ opacity: '0' })
 
   window.onscroll = () => {

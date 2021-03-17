@@ -5,7 +5,7 @@ import SpotifyWebApi from 'spotify-web-api-js'
 import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser, setToken, setTopArtists, setPlaylists, setSpotify } from './redux/ducks/userReducer'
-import { closeDropdown } from './redux/ducks/dropdownReducer'
+import { closeDropdown } from './redux/ducks/generalReducer'
 
 const s = new SpotifyWebApi()
 

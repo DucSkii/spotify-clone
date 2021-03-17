@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux'
 import userReducer from './ducks/userReducer'
-import dropdownReducer from './ducks/dropdownReducer'
+import generalReducer from './ducks/generalReducer'
 
 const reducer = combineReducers({
   user: userReducer,
-  dropdown: dropdownReducer,
+  general: generalReducer,
 })
 
 const store = createStore(reducer)

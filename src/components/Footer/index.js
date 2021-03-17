@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import SkipNextIcon from '@material-ui/icons/SkipNext'
@@ -10,10 +12,14 @@ import VolumeUpOutlinedIcon from '@material-ui/icons/VolumeUpOutlined'
 import VolumeDownOutlinedIcon from '@material-ui/icons/VolumeDownOutlined'
 import VolumeOffOutlinedIcon from '@material-ui/icons/VolumeOffOutlined'
 import QueueMusicIcon from '@material-ui/icons/QueueMusic'
+import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined'
 
 import './index.css'
 
 const Footer = () => {
+
+  const dispatch = useDispatch()
+  const songCover = useSelector(state => state.general.coverOpen)
 
   return (
     <div className='footer-container'>
@@ -34,6 +40,18 @@ const Footer = () => {
       <div className='footer-control'>
         CONTROLSsssssssssssssssssssssssssssssssssssssssssssssssss
       </div>
+      {songCover &&
+        <div className='footer-songCover'>
+          <img
+            src='https://upload.wikimedia.org/wikipedia/en/4/44/Don%27t_Let_Me_Down_%28featuring_Daya%29_%28Official_Single_Cover%29_by_The_Chainsmokers.png'
+            alt='Song Cover'
+            draggable='false'
+          />
+          <div className='showLess' onClick={() => dispatch(closeCover())}>
+            <ExpandMoreOutlinedIcon fontSize='large' />
+          </div>
+        </div>
+      }
     </div>
   )
 }

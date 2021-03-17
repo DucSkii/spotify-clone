@@ -1,11 +1,16 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { openCover } from '../../../redux/ducks/generalReducer'
+import ExpandLessOutlinedIcon from '@material-ui/icons/ExpandLessOutlined'
 
 import './index.css'
 
 const Song = ({ cover, artists, song }) => {
 
-  // const artists = ['Kid Travis', 'Cam Fattore']
+  const dispatch = useDispatch()
 
+  const coverOpen = useSelector(state => state.general.coverOpen)
+  console.log('coverOpen', coverOpen)
   const renderArtists = () => {
     if (artists?.length === 1) {
       return (
@@ -28,12 +33,19 @@ const Song = ({ cover, artists, song }) => {
 
   return (
     <div className='song'>
-      <img
-        src={cover}
-        alt='Song Cover'
-        draggable='false'
-      />
-      <div className='song-desc'>
+      {!coverOpen &&
+        <div className='song-cover'>
+          <img
+            src={cover}
+            alt='Song Cover'
+            draggable='false'
+          />
+          <div className='circleIcon' onClick={() => dispatch(openCover())}>
+            <ExpandLessOutlinedIcon />
+          </div>
+        </div>
+      }
+      <div className={`song-desc ${coverOpen ? 'removeMargin' : ''}`}>
         <p>{song}</p>
         <div className='song-desc-artists'>
           {renderArtists()}

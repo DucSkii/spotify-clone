@@ -2,7 +2,7 @@ import React from 'react'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
 import DropdownOptions from '../DropdownOptions'
-import { openDropdown, closeDropdown } from '../../redux/ducks/dropdownReducer'
+import { openDropdown, closeDropdown } from '../../redux/ducks/generalReducer'
 import { useSelector, useDispatch } from 'react-redux'
 
 import './index.css'
@@ -10,7 +10,7 @@ import './index.css'
 const AccountButton = (props) => {
 
   const dispatch = useDispatch()
-  const open = useSelector(state => state.dropdown.open)
+  const open = useSelector(state => state.general.open)
 
   const toggleDropdown = () => {
     return open ? dispatch(closeDropdown()) : dispatch(openDropdown())
