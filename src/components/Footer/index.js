@@ -3,12 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
 import Volume from './Volume'
-import ShuffleIcon from '@material-ui/icons/Shuffle'
-import SkipNextIcon from '@material-ui/icons/SkipNext'
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow'
-import PauseIcon from '@material-ui/icons/Pause'
-import RepeatIcon from '@material-ui/icons/Repeat'
+import Control from './Control'
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined'
 
 import './index.css'
@@ -35,7 +30,7 @@ const Footer = () => {
         {/* play section has 2 sections, controls. time */}
       </div>
       <div className='footer-control'>
-        CONTROLSsssssssssssssssssssssssssssssssssssssssssssssssss
+        <Control />
       </div>
       {songCover &&
         <div className='footer-songCover'>
