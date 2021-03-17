@@ -8,9 +8,8 @@ import './index.css'
 const Song = ({ cover, artists, song }) => {
 
   const dispatch = useDispatch()
-
   const coverOpen = useSelector(state => state.general.coverOpen)
-  console.log('coverOpen', coverOpen)
+
   const renderArtists = () => {
     if (artists?.length === 1) {
       return (
