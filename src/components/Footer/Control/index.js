@@ -15,9 +15,13 @@ const Control = () => {
   return (
     <div className='control'>
       <div className='control-buttons'>
-        <div className='play-icon'>
+        <ShuffleIcon className='control-button' fontSize='small' style={{ marginRight: '28px' }} />
+        <SkipPreviousIcon className='control-button' fontSize='small' style={{ marginRight: '28px' }} />
+        <div className='play-icon' >
           <PauseIcon fontSize='small' />
         </div>
+        <SkipNextIcon className='control-button' fontSize='small' style={{ marginLeft: '28px' }} />
+        <RepeatIcon className='control-button' fontSize='small' style={{ marginLeft: '28px' }} />
       </div>
       <div className='control-time'>
         <p style={{ marginRight: '10px' }}>0:00</p>
