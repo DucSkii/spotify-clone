@@ -67,7 +67,7 @@ const App = () => {
     }
     dispatch(closeDropdown())
   }
-
+  
   return (
     <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={toggleDropdown}>
       {token ? <Player spotify={s} /> : <Login />}

@@ -2,3 +2,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+.player_body {
+  width: calc(100vw - 232.86px);
+  height: 100%;
+}

@@ -5,6 +5,7 @@ import SideBar from '../../components/SideBar'
 import Home from '../Home'
 import Search from '../Search'
 import YourLibrary from '../YourLibrary'
+import Footer from '../../components/Footer'
 
 import './index.css'
 
@@ -19,14 +20,18 @@ const Player = ({ s }) => {
 
   return (
     <div className='player'>
-      <SideBar pathname={pathname} />
-      <Header />
-      <div />
-      <Switch>
-        <Route path='/Search' component={Search} />
-        <Route path='/Your Library' component={YourLibrary} />
-        <Route exact path='/' component={Home} />
-      </Switch>
+      <Footer />
+      <div className='player_sidebar'>
+        <SideBar pathname={pathname} />
+      </div>
+      <div className='player_body'>
+        <Header />
+        <Switch>
+          <Route path='/Search' component={Search} />
+          <Route path='/Your Library' component={YourLibrary} />
+          <Route exact path='/' component={Home} />
+        </Switch>
+      </div>
     </div>
   )
 }
