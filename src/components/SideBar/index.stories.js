@@ -3,7 +3,7 @@ import SideBar from './index'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: 'Components/Sidebar',
+  title: 'Components/SideBar',
   component: SideBar,
 }
 

@@ -1,0 +1,45 @@
+.song {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.song > img {
+  object-fit: contain;
+  width: 60px;
+}
+
+.song-desc {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+  color: white;
+}
+
+.song-desc > p {
+  margin: 0px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.song-desc > p:hover {
+  text-decoration: underline;
+}
+
+.song-desc-artists {
+  display: flex;
+  align-items: center;
+}
+
+.song-desc-artists > p {
+  margin: 0px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.song-desc-artists > p:hover {
+  text-decoration: underline;
+}

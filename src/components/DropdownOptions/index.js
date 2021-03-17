@@ -4,7 +4,6 @@ import './index.css'
 const DropdownOptions = ({ text, logout = false }) => {
 
   const logoutFunction = () => {
-    localStorage.clear()
     window.location.reload()
   }
 

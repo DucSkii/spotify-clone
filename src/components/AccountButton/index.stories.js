@@ -3,7 +3,7 @@ import AccountButton from './index'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: 'Components/AccountButton',
+  title: 'Components/Header/AccountButton',
   component: AccountButton,
 }
 

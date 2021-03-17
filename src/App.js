@@ -15,27 +15,6 @@ const App = () => {
   const token = useSelector(state => state.user.token)
 
   useEffect(() => {
-    if (localStorage.getItem('userToken') !== null) {
-      let token = localStorage.getItem('userToken')
-      s.setAccessToken(token)
-      dispatch(setToken(token))
-
-      dispatch(setSpotify(s))
-
-      s.getMe().then((user) => {
-        dispatch(setUser(user))
-      })
-
-      s.getMyTopArtists().then((response) => {
-        dispatch(setTopArtists(response))
-      })
-
-      s.getUserPlaylists().then((playlists) => {
-        dispatch(setPlaylists(playlists))
-      })
-      return
-    }
-
     const hash = getTokenFromUrl()
     window.location.hash = ''
     let _token = hash.access_token
@@ -43,7 +22,6 @@ const App = () => {
     if (_token) {
       s.setAccessToken(_token)
       dispatch(setToken(_token))
-      localStorage.setItem('userToken', _token)
 
       dispatch(setSpotify(s))
 
@@ -67,7 +45,7 @@ const App = () => {
     }
     dispatch(closeDropdown())
   }
-  
+
   return (
     <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={toggleDropdown}>
       {token ? <Player spotify={s} /> : <Login />}
