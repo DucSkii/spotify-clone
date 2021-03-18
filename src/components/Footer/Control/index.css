@@ -43,6 +43,15 @@
   color: white;
 }
 
+.control-button-green {
+  color: #1db954;
+  cursor: pointer;
+}
+
+.control-button-green:hover {
+  color: #21cf5e;
+}
+
 .control-time {
   display: flex;
   justify-content: center;

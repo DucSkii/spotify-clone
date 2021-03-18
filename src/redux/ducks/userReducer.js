@@ -5,9 +5,17 @@ const initialState = {
   discover_weekly: null,
   top_artists: null,
   playing: false,
+  shuffle: false,
   item: null,
   token: null,
   // token: 'BQARjfHesu8uSz5nv3lXVJeQN404FLsRQorsebaSnuSzotf7XiUQk_fXZGEMx_dLWrV8a7GogAC8zt3s17tRt0LfRBUGFTcCEWqnALOoLMs-YvH6LYQU9pMdrHDKeeO0juiL1hjO_MowxpeZ34cyAvauUb9FzuKQ',
+}
+
+export const setShuffle = (shuffle) => {
+  return {
+    type: 'SET_SHUFFLE',
+    shuffle,
+  }
 }
 
 export const setUser = (user) => {
@@ -63,6 +71,11 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_SHUFFLE':
+      return {
+        ...state,
+        shuffle: action.shuffle
+      }
     case 'SET_USER':
       return {
         ...state,

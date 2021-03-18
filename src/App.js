@@ -4,7 +4,7 @@ import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser, setToken, setTopArtists, setPlaylists, setSpotify, setPlaying, setItem, setDiscoverWeekly } from './redux/ducks/userReducer'
+import { setUser, setToken, setTopArtists, setPlaylists, setSpotify, setPlaying, setItem, setDiscoverWeekly, setShuffle } from './redux/ducks/userReducer'
 import { closeDropdown } from './redux/ducks/generalReducer'
 
 const s = new SpotifyWebApi()
@@ -15,7 +15,7 @@ const App = () => {
   const token = useSelector(state => state.user.token)
   const open = useSelector(state => state.general.open)
   const user = useSelector(state => state.user.user)
-
+  
   useEffect(() => {
     const hash = getTokenFromUrl()
     window.location.hash = ''
@@ -42,6 +42,7 @@ const App = () => {
       s.getMyCurrentPlaybackState().then(song => {
         dispatch(setPlaying(song.is_playing))
         dispatch(setItem(song.item))
+        dispatch(setShuffle(song.shuffle_state))
       })
 
       s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>

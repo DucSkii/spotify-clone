@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setPlaying, setItem } from '../../../redux/ducks/userReducer'
+import { setPlaying, setItem, setShuffle } from '../../../redux/ducks/userReducer'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import SkipNextIcon from '@material-ui/icons/SkipNext'
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious'
@@ -10,7 +10,7 @@ import RepeatIcon from '@material-ui/icons/Repeat'
 
 import './index.css'
 
-const Control = ({ playing, spotify }) => {
+const Control = ({ playing, spotify, shuffle }) => {
 
   const dispatch = useDispatch()
 
@@ -46,10 +46,25 @@ const Control = ({ playing, spotify }) => {
     }, 400)
   }
 
+  const handleShuffle = () => {
+    if (shuffle) {
+      spotify.setShuffle(false)
+      dispatch(setShuffle(false))
+    } else {
+      spotify.setShuffle(true)
+      dispatch(setShuffle(true))
+    }
+  }
+
   return (
     <div className='control'>
       <div className='control-buttons'>
-        <ShuffleIcon className='control-button' fontSize='small' style={{ marginRight: '28px' }} />
+        <ShuffleIcon
+          className={shuffle ? 'control-button-green' : 'control-button'}
+          fontSize='small'
+          style={{ marginRight: '28px' }}
+          onClick={handleShuffle}
+        />
         <SkipPreviousIcon
           className='control-button'
           fontSize='small'

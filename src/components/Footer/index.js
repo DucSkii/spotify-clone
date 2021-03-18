@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
@@ -14,9 +14,9 @@ const Footer = ({ spotify }) => {
   const songCover = useSelector(state => state.general.coverOpen)
   const item = useSelector(state => state.user.item)
   const playing = useSelector(state => state.user.playing)
+  const shuffle = useSelector(state => state.user.shuffle)
 
-
-
+  console.log('item', item)
   if (!item) {
     return null
   }
@@ -36,7 +36,7 @@ const Footer = ({ spotify }) => {
         </div>
       </div>
       <div className='footer-control'>
-        <Control playing={playing} spotify={spotify} />
+        <Control playing={playing} spotify={spotify} shuffle={shuffle} />
       </div>
       {songCover &&
         <div className='footer-songCover'>
