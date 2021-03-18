@@ -17,6 +17,7 @@ import {
   setRepeat,
   setVolume,
   setProgress,
+  setRecentlyPlayed,
 } from './redux/ducks/userReducer'
 import { closeDropdown } from './redux/ducks/generalReducer'
 
@@ -47,13 +48,12 @@ const App = () => {
         dispatch(setUser(user))
       })
 
-      s.getMyTopArtists().then((response) => {
-        dispatch(setTopArtists(response))
+      s.getMyRecentlyPlayedTracks().then((response) => {
+        dispatch(setRecentlyPlayed(response.items))
       })
 
       s.getUserPlaylists().then((playlists) => {
         dispatch(setPlaylists(playlists))
-        console.log('playlists', playlists)
       })
 
       s.getMyCurrentPlaybackState().then(song => {

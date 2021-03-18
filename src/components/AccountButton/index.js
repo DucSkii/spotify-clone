@@ -45,7 +45,7 @@ const AccountButton = (props) => {
       </div>
       {open &&
         <div className='dropdown' id='accountButton'>
-          <Link to={`/user/${props.username}`}>
+          <Link to={`/user/${props.username}`} style={{ textDecoration: 'none' }}>
             <DropdownOptions text='Profile' />
           </Link>
           <DropdownOptions text='Log out' logout={true} />

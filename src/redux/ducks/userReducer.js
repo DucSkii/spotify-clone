@@ -11,7 +11,15 @@ const initialState = {
   item: null,
   token: null,
   progress: null,
+  recentlyPlayed: [],
   // token: 'BQARjfHesu8uSz5nv3lXVJeQN404FLsRQorsebaSnuSzotf7XiUQk_fXZGEMx_dLWrV8a7GogAC8zt3s17tRt0LfRBUGFTcCEWqnALOoLMs-YvH6LYQU9pMdrHDKeeO0juiL1hjO_MowxpeZ34cyAvauUb9FzuKQ',
+}
+
+export const setRecentlyPlayed = (recentlyPlayed) => {
+  return {
+    type: 'SET_RECENTLY_PLAYED',
+    recentlyPlayed,
+  }
 }
 
 export const setProgress = (progress) => {
@@ -95,6 +103,11 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_RECENTLY_PLAYED':
+      return {
+        ...state,
+        recentlyPlayed: action.recentlyPlayed,
+      }
     case 'SET_PROGRESS':
       return {
         ...state,
