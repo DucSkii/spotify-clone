@@ -27,8 +27,8 @@ const App = () => {
   const dispatch = useDispatch()
   const token = useSelector(state => state.user.token)
   const open = useSelector(state => state.general.open)
-  const user = useSelector(state => state.user.user)
   const playing = useSelector(state => state.user.playing)
+  const progress = useSelector(state => state.user.progress)
 
   const [count, setCount] = useState(0)
 
@@ -56,7 +56,6 @@ const App = () => {
       })
 
       s.getMyCurrentPlaybackState().then(song => {
-        console.log('song', song)
         dispatch(setPlaying(song.is_playing))
         dispatch(setItem(song.item))
         dispatch(setShuffle(song.shuffle_state))
@@ -82,6 +81,11 @@ const App = () => {
       s.getMyCurrentPlayingTrack().then(track => {
         dispatch(setProgress(track.progress_ms))
       })
+      if (progress <= 5000) {
+        s.getMyCurrentPlayingTrack().then(track => {
+          dispatch(setItem(track.item))
+        })
+      }
     }
   })
 
