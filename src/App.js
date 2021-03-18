@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Login from './pages/Login'
 import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
@@ -28,6 +28,9 @@ const App = () => {
   const token = useSelector(state => state.user.token)
   const open = useSelector(state => state.general.open)
   const user = useSelector(state => state.user.user)
+  const playing = useSelector(state => state.user.playing)
+
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -72,14 +75,23 @@ const App = () => {
     }
   }, [token, dispatch])
 
+  useEffect(() => {
+    const timer = setInterval(() => playing && setCount(count + 1), 3e3)
+    return () => {
+      clearInterval(timer)
+      s.getMyCurrentPlayingTrack().then(track => {
+        dispatch(setProgress(track.progress_ms))
+      })
+    }
+  })
+
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {
       return
     }
     dispatch(closeDropdown())
   }
-  console.log('user', user)
-  
+
   return (
     <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={open ? toggleDropdown : () => { }}>
       {token ? <Player spotify={s} /> : <Login />}
