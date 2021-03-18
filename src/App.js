@@ -4,7 +4,7 @@ import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser, setToken, setTopArtists, setPlaylists, setSpotify } from './redux/ducks/userReducer'
+import { setUser, setToken, setTopArtists, setPlaylists, setSpotify, setPlaying, setItem } from './redux/ducks/userReducer'
 import { closeDropdown } from './redux/ducks/generalReducer'
 
 const s = new SpotifyWebApi()
@@ -13,6 +13,8 @@ const App = () => {
 
   const dispatch = useDispatch()
   const token = useSelector(state => state.user.token)
+  const open = useSelector(state => state.general.open)
+  const user = useSelector(state => state.user.user)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -36,18 +38,25 @@ const App = () => {
       s.getUserPlaylists().then((playlists) => {
         dispatch(setPlaylists(playlists))
       })
+
+      s.getMyCurrentPlaybackState().then(song => {
+        dispatch(setPlaying(song.is_playing))
+        dispatch(setItem(song.item))
+      })
     }
   }, [token, dispatch])
 
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {
-      return null
+      return
     }
     dispatch(closeDropdown())
   }
 
+console.log('user', user)
+
   return (
-    <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={toggleDropdown}>
+    <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={open ? toggleDropdown : () => { }}>
       {token ? <Player spotify={s} /> : <Login />}
     </div>
   )

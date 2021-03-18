@@ -4,6 +4,7 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
 import DropdownOptions from '../DropdownOptions'
 import { openDropdown, closeDropdown } from '../../redux/ducks/generalReducer'
 import { useSelector, useDispatch } from 'react-redux'
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 
 import './index.css'
 
@@ -11,6 +12,7 @@ const AccountButton = (props) => {
 
   const dispatch = useDispatch()
   const open = useSelector(state => state.general.open)
+  const user = useSelector(state => state.user.user)
 
   const toggleDropdown = () => {
     return open ? dispatch(closeDropdown()) : dispatch(openDropdown())
@@ -21,7 +23,14 @@ const AccountButton = (props) => {
       <div className={`accountButton ${open ? 'selected-accountButton' : ''}`} onClick={toggleDropdown} id='accountButton'>
         <div className='account-user' id='accountButton'>
           <div className='accountIcon'>
-
+            {user?.images?.length ? (
+              <img
+                src={user.images[0].url}
+                alt='User Icon'
+              />
+            ) : (
+              <AccountCircleOutlinedIcon className='accountIcon-none' style={{ fontSize: '35px' }} />
+            )}
           </div>
           <p>{props.username}</p>
         </div>

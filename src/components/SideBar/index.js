@@ -2,10 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import spotifyLogo from '../../images/spotifyLogo.jpg'
 import Navigation from '../Navigation'
+import { useSelector } from 'react-redux'
 
 import './index.css'
 
 const SideBar = (props) => {
+
+  const playlists = useSelector(state => state.user.playlists)
 
   const renderNavigation = (navigation) => {
     if (props.pathname === (navigation === 'Home' ? '/' : `/${navigation}`)) {
@@ -18,6 +21,14 @@ const SideBar = (props) => {
         <Navigation route={navigation} />
       </Link>
     )
+  }
+
+  const renderPlaylists = () => {
+    return playlists?.items?.map((playlist, index) => {
+      return (
+        <div key={index} className='sideBar-playlists-item'>{playlist.name}</div>
+      )
+    })
   }
 
   return (
@@ -35,9 +46,7 @@ const SideBar = (props) => {
       <div className='sideBar-playlists'>
         <p>PLAYLISTS</p>
         <div className='sideBar-playlists-separator' />
-        <div className='sideBar-playlists-item'>PLAYLISTS</div>
-        <div className='sideBar-playlists-item'>PLAYLISTS</div>
-        <div className='sideBar-playlists-item'>PLAYLISTS</div>
+        {renderPlaylists()}
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
@@ -8,34 +8,40 @@ import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined'
 
 import './index.css'
 
-const Footer = () => {
+const Footer = ({ spotify }) => {
 
   const dispatch = useDispatch()
   const songCover = useSelector(state => state.general.coverOpen)
+  const item = useSelector(state => state.user.item)
+  const playing = useSelector(state => state.user.playing)
+
+
+
+  if (!item) {
+    return null
+  }
 
   return (
     <div className='footer-container'>
       <div className='footer'>
         <div className='footer-song'>
           <Song
-            cover='https://upload.wikimedia.org/wikipedia/en/4/44/Don%27t_Let_Me_Down_%28featuring_Daya%29_%28Official_Single_Cover%29_by_The_Chainsmokers.png'
-            song="Don't Let Me Down"
-            artists={['The Chainsmokers', 'Daya']}
+            cover={item.album.images[0].url}
+            song={item.name}
+            artists={item.artists.map(artist => artist.name)}
           />
         </div>
         <div className='footer-volume'>
           <Volume />
         </div>
-        {/* 3 sections, currentsong, play, volume */}
-        {/* play section has 2 sections, controls. time */}
       </div>
       <div className='footer-control'>
-        <Control />
+        <Control playing={playing} spotify={spotify} />
       </div>
       {songCover &&
         <div className='footer-songCover'>
           <img
-            src='https://upload.wikimedia.org/wikipedia/en/4/44/Don%27t_Let_Me_Down_%28featuring_Daya%29_%28Official_Single_Cover%29_by_The_Chainsmokers.png'
+            src={item.album.images[0].url}
             alt='Song Cover'
             draggable='false'
           />

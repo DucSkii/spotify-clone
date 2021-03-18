@@ -9,7 +9,7 @@ import Footer from '../../components/Footer'
 
 import './index.css'
 
-const Player = ({ s }) => {
+const Player = ({ spotify }) => {
 
   const location = useLocation()
   const [pathname, setPathname] = useState('')
@@ -20,7 +20,7 @@ const Player = ({ s }) => {
 
   return (
     <div className='player'>
-      <Footer />
+      <Footer spotify={spotify} />
       <div className='player_sidebar'>
         <SideBar pathname={pathname} />
       </div>
