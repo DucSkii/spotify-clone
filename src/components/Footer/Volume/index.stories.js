@@ -7,4 +7,4 @@ export default {
   component: Volume
 }
 
-export const Default = () => <Volume />
+export const Default = () => <Volume volume={60}/>

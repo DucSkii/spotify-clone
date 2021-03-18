@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setVolume } from '../../../redux/ducks/userReducer'
+import Slider from '@material-ui/core/Slider'
 import VolumeUpOutlinedIcon from '@material-ui/icons/VolumeUpOutlined'
 import VolumeDownOutlinedIcon from '@material-ui/icons/VolumeDownOutlined'
 import VolumeOffOutlinedIcon from '@material-ui/icons/VolumeOffOutlined'
@@ -15,19 +16,25 @@ const Volume = ({ volume, spotify }) => {
   const [hovered, setHovered] = useState(false)
   const [previousVolume, setPreviousVolume] = useState(null)
 
+
   const handleMute = () => {
     if (volume === 0) {
-      if (previousVolume === null) {
-        return null
-      } else {
+      if (previousVolume !== null) {
         spotify.setVolume(previousVolume)
         dispatch(setVolume(previousVolume))
+      } else {
+        return null
       }
     } else {
       setPreviousVolume(volume)
       spotify.setVolume(0)
       dispatch(setVolume(0))
     }
+  }
+
+  const handleVolume = (event, newValue) => {
+    dispatch(setVolume(newValue))
+    spotify.setVolume(newValue)
   }
 
   const renderVolumeIcon = () => {
@@ -58,9 +65,10 @@ const Volume = ({ volume, spotify }) => {
           {renderVolumeIcon()}
         </div>
         <div className='volumeBar'>
-          <div
-            className={`volumeBar-level ${hovered ? 'backgroundGreen' : ''}`}
-            style={{ width: `${volume}%` }}
+          <Slider
+            value={volume}
+            onChange={handleVolume}
+            style={{ color: `${hovered ? '#1db954' : 'rgb(158, 158, 158)'}` }}
           />
         </div>
       </div>
