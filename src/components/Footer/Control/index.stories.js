@@ -11,4 +11,4 @@ const item = {
   duration_ms: 205593,
 }
 
-export const Default = () => <Control item={item}/>
+export const Default = () => <Control item={item} progress={150000}/>
