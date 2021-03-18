@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setPlaying } from '../../../redux/ducks/userReducer'
+import { setPlaying, setItem } from '../../../redux/ducks/userReducer'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import SkipNextIcon from '@material-ui/icons/SkipNext'
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious'
@@ -26,11 +26,36 @@ const Control = ({ playing, spotify }) => {
     }
   }
 
+  const skipNext = () => {
+    spotify.skipToNext()
+    setTimeout(() => {
+      spotify.getMyCurrentPlayingTrack().then(track => {
+        dispatch(setPlaying(true))
+        dispatch(setItem(track.item))
+      })
+    }, 400)
+  }
+
+  const skipPrevious = () => {
+    spotify.skipToPrevious()
+    setTimeout(() => {
+      spotify.getMyCurrentPlayingTrack().then(track => {
+        dispatch(setPlaying(true))
+        dispatch(setItem(track.item))
+      })
+    }, 400)
+  }
+
   return (
     <div className='control'>
       <div className='control-buttons'>
         <ShuffleIcon className='control-button' fontSize='small' style={{ marginRight: '28px' }} />
-        <SkipPreviousIcon className='control-button' fontSize='small' style={{ marginRight: '28px' }} />
+        <SkipPreviousIcon
+          className='control-button'
+          fontSize='small'
+          style={{ marginRight: '28px' }}
+          onClick={skipPrevious}
+        />
         <div className='play-icon' onClick={handlePause}>
           {playing ? (
             <PauseIcon fontSize='small' />
@@ -38,7 +63,12 @@ const Control = ({ playing, spotify }) => {
             <PlayArrowIcon fontSize='small' />
           )}
         </div>
-        <SkipNextIcon className='control-button' fontSize='small' style={{ marginLeft: '28px' }} />
+        <SkipNextIcon
+          className='control-button'
+          fontSize='small'
+          style={{ marginLeft: '28px' }}
+          onClick={skipNext}
+        />
         <RepeatIcon className='control-button' fontSize='small' style={{ marginLeft: '28px' }} />
       </div>
       <div className='control-time'>
