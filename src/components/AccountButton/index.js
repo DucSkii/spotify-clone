@@ -5,6 +5,7 @@ import DropdownOptions from '../DropdownOptions'
 import { openDropdown, closeDropdown } from '../../redux/ducks/generalReducer'
 import { useSelector, useDispatch } from 'react-redux'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
+import { Link } from 'react-router-dom'
 
 import './index.css'
 
@@ -19,7 +20,7 @@ const AccountButton = (props) => {
   }
 
   return (
-    <div className='accountButton-container' id='accountButton'>
+    <div className='accountButton-container' id='accountButton' style={{ marginTop: `${open ? '35px' : ''}` }}>
       <div className={`accountButton ${open ? 'selected-accountButton' : ''}`} onClick={toggleDropdown} id='accountButton'>
         <div className='account-user' id='accountButton'>
           <div className='accountIcon'>
@@ -44,6 +45,9 @@ const AccountButton = (props) => {
       </div>
       {open &&
         <div className='dropdown' id='accountButton'>
+          <Link to={`/user/${props.username}`}>
+            <DropdownOptions text='Profile' />
+          </Link>
           <DropdownOptions text='Log out' logout={true} />
         </div>
       }

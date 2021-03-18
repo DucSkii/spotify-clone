@@ -53,6 +53,7 @@ const App = () => {
 
       s.getUserPlaylists().then((playlists) => {
         dispatch(setPlaylists(playlists))
+        console.log('playlists', playlists)
       })
 
       s.getMyCurrentPlaybackState().then(song => {
@@ -74,20 +75,20 @@ const App = () => {
     }
   }, [token, dispatch])
 
-  useEffect(() => {
-    const timer = setInterval(() => playing && setCount(count + 1), 3e3)
-    return () => {
-      clearInterval(timer)
-      s.getMyCurrentPlayingTrack().then(track => {
-        dispatch(setProgress(track.progress_ms))
-      })
-      if (progress <= 5000) {
-        s.getMyCurrentPlayingTrack().then(track => {
-          dispatch(setItem(track.item))
-        })
-      }
-    }
-  })
+  // useEffect(() => {
+  //   const timer = setInterval(() => playing && setCount(count + 1), 3e3)
+  //   return () => {
+  //     clearInterval(timer)
+  //     s.getMyCurrentPlayingTrack().then(track => {
+  //       dispatch(setProgress(track.progress_ms))
+  //     })
+  //     if (progress <= 5000) {
+  //       s.getMyCurrentPlayingTrack().then(track => {
+  //         dispatch(setItem(track.item))
+  //       })
+  //     }
+  //   }
+  // })
 
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {
