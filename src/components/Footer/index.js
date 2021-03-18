@@ -42,6 +42,7 @@ const Footer = ({ spotify }) => {
           spotify={spotify}
           shuffle={shuffle}
           repeat={repeat}
+          item={item}
         />
       </div>
       {songCover &&

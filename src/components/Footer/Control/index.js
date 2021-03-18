@@ -11,7 +11,7 @@ import RepeatOneIcon from '@material-ui/icons/RepeatOne'
 
 import './index.css'
 
-const Control = ({ playing, spotify, shuffle, repeat }) => {
+const Control = ({ playing, spotify, shuffle, repeat, item }) => {
 
   const dispatch = useDispatch()
 
@@ -123,7 +123,7 @@ const Control = ({ playing, spotify, shuffle, repeat }) => {
         >
           <div className={`control-time-bar-progress ${hovered ? 'backgroundGreen' : ''}`} />
         </div>
-        <p style={{ marginLeft: '10px' }}>2:30</p>
+        <p style={{ marginLeft: '10px' }}>{((item.duration_ms) / 60000).toFixed(2)}</p>
       </div>
     </div>
   )
