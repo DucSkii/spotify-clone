@@ -14,7 +14,8 @@ import {
   setItem,
   setDiscoverWeekly,
   setShuffle,
-  setRepeat
+  setRepeat,
+  setVolume,
 } from './redux/ducks/userReducer'
 import { closeDropdown } from './redux/ducks/generalReducer'
 
@@ -60,10 +61,14 @@ const App = () => {
 
       s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
         dispatch(setDiscoverWeekly(response))
-      );
+      )
+
+      s.getMyDevices().then((res) => {
+        const device = res.devices.filter(device => device.is_active === true)
+        dispatch(setVolume(device[0].volume_percent))
+      })
     }
   }, [token, dispatch])
-
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {
       return

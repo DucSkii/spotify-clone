@@ -7,9 +7,17 @@ const initialState = {
   playing: false,
   shuffle: false,
   repeat: null,
+  volume: null,
   item: null,
   token: null,
   // token: 'BQARjfHesu8uSz5nv3lXVJeQN404FLsRQorsebaSnuSzotf7XiUQk_fXZGEMx_dLWrV8a7GogAC8zt3s17tRt0LfRBUGFTcCEWqnALOoLMs-YvH6LYQU9pMdrHDKeeO0juiL1hjO_MowxpeZ34cyAvauUb9FzuKQ',
+}
+
+export const setVolume = (volume) => {
+  return {
+    type: 'SET_VOLUME',
+    volume,
+  }
 }
 
 export const setRepeat = (repeat) => {
@@ -79,15 +87,20 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_VOLUME':
+      return {
+        ...state,
+        volume: action.volume,
+      }
     case 'SET_REPEAT':
       return {
         ...state,
-        repeat: action.repeat
+        repeat: action.repeat,
       }
     case 'SET_SHUFFLE':
       return {
         ...state,
-        shuffle: action.shuffle
+        shuffle: action.shuffle,
       }
     case 'SET_USER':
       return {

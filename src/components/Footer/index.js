@@ -16,8 +16,7 @@ const Footer = ({ spotify }) => {
   const playing = useSelector(state => state.user.playing)
   const shuffle = useSelector(state => state.user.shuffle)
   const repeat = useSelector(state => state.user.repeat)
-
-  console.log('repeat', repeat)
+  const volume = useSelector(state => state.user.volume)
 
   if (!item) {
     return null
@@ -34,7 +33,7 @@ const Footer = ({ spotify }) => {
           />
         </div>
         <div className='footer-volume'>
-          <Volume />
+          <Volume volume={volume} spotify={spotify} />
         </div>
       </div>
       <div className='footer-control'>
