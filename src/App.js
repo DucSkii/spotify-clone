@@ -16,6 +16,7 @@ import {
   setShuffle,
   setRepeat,
   setVolume,
+  setProgress,
 } from './redux/ducks/userReducer'
 import { closeDropdown } from './redux/ducks/generalReducer'
 
@@ -57,6 +58,7 @@ const App = () => {
         dispatch(setItem(song.item))
         dispatch(setShuffle(song.shuffle_state))
         dispatch(setRepeat(song.repeat_state))
+        dispatch(setProgress(song.progress_ms))
       })
 
       s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
@@ -69,15 +71,15 @@ const App = () => {
       })
     }
   }, [token, dispatch])
+
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {
       return
     }
     dispatch(closeDropdown())
   }
-
   console.log('user', user)
-
+  
   return (
     <div className="App" style={{ backgroundColor: 'rgb(25, 25, 25)' }} onClick={open ? toggleDropdown : () => { }}>
       {token ? <Player spotify={s} /> : <Login />}

@@ -10,7 +10,15 @@ const initialState = {
   volume: null,
   item: null,
   token: null,
+  progress: null,
   // token: 'BQARjfHesu8uSz5nv3lXVJeQN404FLsRQorsebaSnuSzotf7XiUQk_fXZGEMx_dLWrV8a7GogAC8zt3s17tRt0LfRBUGFTcCEWqnALOoLMs-YvH6LYQU9pMdrHDKeeO0juiL1hjO_MowxpeZ34cyAvauUb9FzuKQ',
+}
+
+export const setProgress = (progress) => {
+  return {
+    type: 'SET_PROGRESS',
+    progress,
+  }
 }
 
 export const setVolume = (volume) => {
@@ -87,6 +95,11 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_PROGRESS':
+      return {
+        ...state,
+        progress: action.progress,
+      }
     case 'SET_VOLUME':
       return {
         ...state,

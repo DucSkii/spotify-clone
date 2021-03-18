@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setPlaying, setItem, setShuffle, setRepeat } from '../../../redux/ducks/userReducer'
+import { setPlaying, setItem, setShuffle, setRepeat, setProgress } from '../../../redux/ducks/userReducer'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import SkipNextIcon from '@material-ui/icons/SkipNext'
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious'
@@ -8,10 +8,11 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import PauseIcon from '@material-ui/icons/Pause'
 import RepeatIcon from '@material-ui/icons/Repeat'
 import RepeatOneIcon from '@material-ui/icons/RepeatOne'
+import { millisecondsToMinutes } from '../../../utils/millisecondsToMinutes'
 
 import './index.css'
 
-const Control = ({ playing, spotify, shuffle, repeat, item }) => {
+const Control = ({ playing, spotify, shuffle, repeat, item, progress }) => {
 
   const dispatch = useDispatch()
 
@@ -31,20 +32,22 @@ const Control = ({ playing, spotify, shuffle, repeat, item }) => {
     spotify.skipToNext()
     setTimeout(() => {
       spotify.getMyCurrentPlayingTrack().then(track => {
+        dispatch(setProgress(track.progress_ms))
         dispatch(setPlaying(true))
         dispatch(setItem(track.item))
       })
-    }, 400)
+    }, 500)
   }
 
   const skipPrevious = () => {
     spotify.skipToPrevious()
     setTimeout(() => {
       spotify.getMyCurrentPlayingTrack().then(track => {
+        dispatch(setProgress(track.progress_ms))
         dispatch(setPlaying(true))
         dispatch(setItem(track.item))
       })
-    }, 400)
+    }, 500)
   }
 
   const handleShuffle = () => {
@@ -115,15 +118,22 @@ const Control = ({ playing, spotify, shuffle, repeat, item }) => {
         )}
       </div>
       <div className='control-time'>
-        <p style={{ marginRight: '10px' }}>0:00</p>
+        <p style={{ marginRight: '10px' }}>{millisecondsToMinutes(progress)}</p>
         <div
           className='control-time-bar'
           onMouseOver={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
-          <div className={`control-time-bar-progress ${hovered ? 'backgroundGreen' : ''}`} />
+          <div
+            className={`control-time-bar-progress ${hovered ? 'backgroundGreen' : ''}`}
+            style={{ width: `${(progress / item.duration_ms) * 100}%` }}
+          >
+            {hovered &&
+              <div className='ball' />
+            }
+          </div>
         </div>
-        <p style={{ marginLeft: '10px' }}>{((item.duration_ms) / 60000).toFixed(2)}</p>
+        <p style={{ marginLeft: '10px' }}>{millisecondsToMinutes(item.duration_ms)}</p>
       </div>
     </div>
   )

@@ -17,6 +17,7 @@ const Footer = ({ spotify }) => {
   const shuffle = useSelector(state => state.user.shuffle)
   const repeat = useSelector(state => state.user.repeat)
   const volume = useSelector(state => state.user.volume)
+  const progress = useSelector(state => state.user.progress)
 
   if (!item) {
     return null
@@ -43,6 +44,7 @@ const Footer = ({ spotify }) => {
           shuffle={shuffle}
           repeat={repeat}
           item={item}
+          progress={progress}
         />
       </div>
       {songCover &&

@@ -75,7 +75,10 @@
 }
 
 .control-time-bar-progress {
-  width: 50%;
+  min-width: 1%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   height: 5px;
   border-radius: 100px;
   cursor: pointer;
@@ -84,4 +87,12 @@
 
 .backgroundGreen {
   background-color: #1db954;
+}
+
+.ball {
+  min-width: 12px;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 20px;
 }

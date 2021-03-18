@@ -7,4 +7,8 @@ export default {
   component: Control,
 }
 
-export const Default = () => <Control />
+const item = {
+  duration_ms: 205593,
+}
+
+export const Default = () => <Control item={item}/>
