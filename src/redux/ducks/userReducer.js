@@ -6,9 +6,17 @@ const initialState = {
   top_artists: null,
   playing: false,
   shuffle: false,
+  repeat: null,
   item: null,
   token: null,
   // token: 'BQARjfHesu8uSz5nv3lXVJeQN404FLsRQorsebaSnuSzotf7XiUQk_fXZGEMx_dLWrV8a7GogAC8zt3s17tRt0LfRBUGFTcCEWqnALOoLMs-YvH6LYQU9pMdrHDKeeO0juiL1hjO_MowxpeZ34cyAvauUb9FzuKQ',
+}
+
+export const setRepeat = (repeat) => {
+  return {
+    type: 'SET_REPEAT',
+    repeat,
+  }
 }
 
 export const setShuffle = (shuffle) => {
@@ -71,6 +79,11 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_REPEAT':
+      return {
+        ...state,
+        repeat: action.repeat
+      }
     case 'SET_SHUFFLE':
       return {
         ...state,
