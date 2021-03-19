@@ -45,6 +45,7 @@ const Profile = () => {
                 draggable='false'
                 src={user.images[0].url}
                 alt='User Icon'
+                style={{ userSelect: 'none' }}
               />
             ) : (
               <AccountCircleOutlinedIcon style={{ fontSize: '230px', color: 'rgb(107, 107, 107)' }} />
@@ -65,6 +66,17 @@ const Profile = () => {
       </div>
       <div className='profile-body'>
         <h1>Recently Played</h1>
+        <p>Only visible to you</p>
+        <div className='profile-songs'>
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+        </div>
       </div>
     </div>
   )

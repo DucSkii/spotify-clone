@@ -1,6 +1,7 @@
 .player {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 115px;
 }
 
 .player_body {

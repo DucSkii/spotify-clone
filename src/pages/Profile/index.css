@@ -3,7 +3,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid yellow; */
   color: white;
 }
 
@@ -25,8 +24,30 @@
   justify-content: flex-start;
 }
 
+.profile-songs {
+  display: grid;
+  width: calc(100% - 175px);
+  grid-template-columns: repeat(8, 12.5%);
+  grid-column-gap: 25px;
+}
+
+.profile-body {
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: column;
+}
+
 .profile-body > h1 {
-  padding: 15px 45px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 25px;
+}
+
+.profile-body > p {
+  font-size: 14px;
+  color: rgb(177, 177, 177);
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .profile-information {
@@ -47,7 +68,7 @@
 .profile-information > p {
   font-weight: 700;
   font-size: 12px;
-  margin: 0px;
+  margin: 0;
 }
 
 .profile-detail {
@@ -91,3 +112,42 @@
   height: 190px;
 }
 }
+
+@media only screen and (max-width: 1870px) {
+  .profile-songs {
+    width: calc(100% - 150px);
+    grid-template-columns: repeat(7, 14.28%);
+  }
+}
+@media only screen and (max-width: 1690px) {
+  .profile-songs {
+    width: calc(100% - 125px);
+    grid-template-columns: repeat(6, 16.66%);
+  }
+}
+@media only screen and (max-width: 1490px) {
+  .profile-songs {
+    width: calc(100% - 100px);
+    grid-template-columns: repeat(5, 20%);
+  }
+}
+@media only screen and (max-width: 1288px) {
+  .profile-songs {
+    width: calc(100% - 75px);
+    grid-template-columns: repeat(4, 25%);
+  }
+}
+@media only screen and (max-width: 1083px) {
+  .profile-songs {
+    width: calc(100% - 50px);
+    grid-template-columns: repeat(3, 33.33%);
+  }
+}
+@media only screen and (max-width: 848px) {
+  .profile-songs {
+    width: calc(100% - 25px);
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+/* 1870, 1690, 1490, 1288, 1083, 848 */
