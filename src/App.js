@@ -49,6 +49,10 @@ const App = () => {
         dispatch(setUser(user))
       })
 
+      s.getArtist('64tJ2EAv1R6UaZqc4iOCyj').then(artist => {
+        console.log('artist', artist)
+      })
+
       s.getMyRecentlyPlayedTracks().then((response) => {
         dispatch(setRecentlyPlayed(response.items))
       })
@@ -59,6 +63,7 @@ const App = () => {
 
       s.getMyCurrentPlaybackState().then(song => {
         if (song.length === undefined) {
+          console.log('song', song)
           dispatch(setSpotifyOpen(true))
           dispatch(setPlaying(song.is_playing))
           dispatch(setItem(song.item))

@@ -8,6 +8,7 @@ const Profile = () => {
 
   const user = useSelector(state => state.user.user)
   const playlists = useSelector(state => state.user.playlists)
+  const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
 
   const renderPlaylists = () => {
     if (playlists.items) {

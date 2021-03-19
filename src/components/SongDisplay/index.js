@@ -1,0 +1,87 @@
+import React, { useState } from 'react'
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+
+import './index.css'
+
+const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
+
+  const [hovered, setHovered] = useState(false)
+
+  const renderArtists = () => {
+    if (artists.length === 1) {
+      return (
+        <p>{artists[0]}</p>
+      )
+    } else {
+      return artists.map((artist, index) => {
+        if (index === artists.length - 1) {
+          return (
+            <p>{artist}</p>
+          )
+        } else {
+          return (
+            <p style={{ marginRight: '5px' }}>{artist},</p>
+          )
+        }
+      })
+    }
+  }
+
+  if (artist) {
+    return (
+      <div
+        className='songDisplay'
+        onMouseOver={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div className='songDisplay-image'>
+          {hovered &&
+            <div className='songDisplay-play'>
+              <PlayArrowIcon />
+            </div>
+          }
+          <img
+            src={image}
+            alt='Song Cover'
+            draggable='false'
+          />
+        </div>
+        <div className='songDisplay-info'>
+          {artists}
+          <div className='songDisplay-artists'>
+            <p style={{ fontSize: '13px' }}>Artist</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div
+      className='songDisplay'
+      onMouseOver={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className='songDisplay-image'>
+        {hovered &&
+          <div className='songDisplay-play'>
+            <PlayArrowIcon />
+          </div>
+        }
+        <img
+          src={image}
+          alt='Song Cover'
+          draggable='false'
+        />
+      </div>
+      <div className='songDisplay-info'>
+        {songName}
+        <div className='songDisplay-artists'>
+          {renderArtists()}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default SongDisplay
