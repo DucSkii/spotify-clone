@@ -26,9 +26,14 @@
 
 .profile-songs {
   display: grid;
-  width: calc(100% - 175px);
+  width: calc(100% - 447px);
   grid-template-columns: repeat(8, 12.5%);
-  grid-column-gap: 25px;
+  grid-column-gap: 59px;
+}
+
+.profile-songs-item {
+  height: 240px;
+  margin-bottom: 70px;
 }
 
 .profile-body {
@@ -115,39 +120,37 @@
 
 @media only screen and (max-width: 1870px) {
   .profile-songs {
-    width: calc(100% - 150px);
+    width: calc(100% - 388px);
     grid-template-columns: repeat(7, 14.28%);
   }
 }
 @media only screen and (max-width: 1690px) {
   .profile-songs {
-    width: calc(100% - 125px);
+    width: calc(100% - 329px);
     grid-template-columns: repeat(6, 16.66%);
   }
 }
 @media only screen and (max-width: 1490px) {
   .profile-songs {
-    width: calc(100% - 100px);
+    width: calc(100% - 270px);
     grid-template-columns: repeat(5, 20%);
   }
 }
 @media only screen and (max-width: 1288px) {
   .profile-songs {
-    width: calc(100% - 75px);
+    width: calc(100% - 211px);
     grid-template-columns: repeat(4, 25%);
   }
 }
 @media only screen and (max-width: 1083px) {
   .profile-songs {
-    width: calc(100% - 50px);
+    width: calc(100% - 152px);
     grid-template-columns: repeat(3, 33.33%);
   }
 }
 @media only screen and (max-width: 848px) {
   .profile-songs {
-    width: calc(100% - 25px);
+    width: calc(100% - 93px);
     grid-template-columns: repeat(2, 50%);
   }
 }
-
-/* 1870, 1690, 1490, 1288, 1083, 848 */

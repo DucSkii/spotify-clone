@@ -1,8 +1,7 @@
 .songDisplay {
   width: 100%;
-  max-width: 163px;
-  min-width: 153px;
-  height: 250px;
+  height: 100%;
+  max-width: 238px;
   background-color: rgb(34, 34, 34);
   color: white;
   border-radius: 5px;
@@ -45,15 +44,16 @@
   height: 0px;
   padding-top: 100%;
   position: relative;
-  border-radius: 100px;
+  border-radius: 1000px;
 } 
 
 .songDisplay-image > img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
-  border-radius: 100px;
+  border-radius: 1000px;
 }
 
 .songDisplay-info {

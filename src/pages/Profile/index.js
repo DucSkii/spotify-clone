@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
+import SongDisplay from '../../components/SongDisplay'
 
 import './index.css'
 
@@ -29,6 +30,21 @@ const Profile = () => {
         <p style={{ marginLeft: '0px', color: 'darkgrey' }}>0 Public Playlists</p>
       )
     }
+  }
+
+  const renderRecentlyPlayed = () => {
+    return recentlyPlayed.map((song, index) => {
+      let artists = []
+      song.track.artists.forEach(artist => {
+        artists.push(artist.name)
+      })
+
+      return (
+        <div className='profile-songs-item' key={index}>
+          <SongDisplay artists={artists} songName={song.track.name} image={song.track.album.images[0].url} songId={song.track.id} />
+        </div>
+      )
+    })
   }
 
   if (!user) {
@@ -68,14 +84,7 @@ const Profile = () => {
         <h1>Recently Played</h1>
         <p>Only visible to you</p>
         <div className='profile-songs'>
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
-          <div style={{ width: '100%', height: '284px', backgroundColor: 'red', border: '1px solid blue' }} />
+          {renderRecentlyPlayed()}
         </div>
       </div>
     </div>

@@ -16,11 +16,11 @@ const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
       return artists.map((artist, index) => {
         if (index === artists.length - 1) {
           return (
-            <p>{artist}</p>
+            <p key={index}>{artist}</p>
           )
         } else {
           return (
-            <p style={{ marginRight: '5px' }}>{artist},</p>
+            <p key={index} style={{ marginRight: '5px' }}>{artist},</p>
           )
         }
       })
