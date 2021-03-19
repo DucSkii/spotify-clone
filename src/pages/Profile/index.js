@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SongDisplay from '../../components/SongDisplay'
+import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined'
 
 import './index.css'
 
@@ -10,6 +11,7 @@ const Profile = () => {
   const user = useSelector(state => state.user.user)
   const playlists = useSelector(state => state.user.playlists)
   const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
+  const [hovered, setHovered] = useState(false)
 
   console.log('recentlyPlayed', recentlyPlayed)
 
@@ -56,8 +58,17 @@ const Profile = () => {
       <div className='profile-header'>
         <div className='profile-header-section'>
           <div className='profile-icon-container'>
+            <div
+              className='profile-icon-cover'
+              onMouseLeave={() => setHovered(false)}
+              style={{ display: `${hovered ? 'flex' : 'none'}` }}
+            >
+              <CreateOutlinedIcon style={{ fontSize: '60px', marginBottom: '10px' }} />
+              Choose photo
+            </div>
             {user.images.length ? (
               <img
+                onMouseOver={() => setHovered(true)}
                 draggable='false'
                 src={user.images[0].url}
                 alt='User Icon'

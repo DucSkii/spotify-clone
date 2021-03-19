@@ -103,6 +103,22 @@
   border-radius: 1000px;
 }
 
+.profile-icon-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
+  position: absolute;
+  border-radius: 1000px;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-width: 252px;
+  height: 252px;
+  object-fit: cover;
+  z-index: 30;
+}
+
 .followers:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -111,6 +127,11 @@
 @media only screen and (max-width: 1270px) {
 .profile-icon-container {
   width: 190px;
+}
+
+.profile-icon-cover {
+  min-width: 190px;
+  height: 190px;
 }
 
 .profile-header-section {
