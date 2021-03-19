@@ -31,7 +31,6 @@ const App = () => {
   const open = useSelector(state => state.general.open)
   const playing = useSelector(state => state.user.playing)
   const progress = useSelector(state => state.user.progress)
-  const spotifyOpen = useSelector(state => state.general.spotifyOpen)
 
   const [count, setCount] = useState(0)
 
@@ -94,23 +93,23 @@ const App = () => {
     }
   }, [token, dispatch])
 
-  useEffect(() => {
-    const timer = setInterval(() => playing && setCount(count + 1), 3e3)
-    return () => {
-      clearInterval(timer)
-      if (!playing) {
-        return null
-      }
-      s.getMyCurrentPlayingTrack().then(track => {
-        dispatch(setProgress(track.progress_ms))
-      })
-      if (progress <= 5000) {
-        s.getMyCurrentPlayingTrack().then(track => {
-          dispatch(setItem(track.item))
-        })
-      }
-    }
-  })
+  // useEffect(() => {
+  //   const timer = setInterval(() => playing && setCount(count + 1), 3e3)
+  //   return () => {
+  //     clearInterval(timer)
+  //     if (!playing) {
+  //       return null
+  //     }
+  //     s.getMyCurrentPlayingTrack().then(track => {
+  //       dispatch(setProgress(track.progress_ms))
+  //     })
+  //     if (progress <= 5000) {
+  //       s.getMyCurrentPlayingTrack().then(track => {
+  //         dispatch(setItem(track.item))
+  //       })
+  //     }
+  //   }
+  // })
 
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {

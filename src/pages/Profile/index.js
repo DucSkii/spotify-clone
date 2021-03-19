@@ -34,31 +34,28 @@ const Profile = () => {
 
   return (
     <div className='profile'>
-      <div className='profile-background' />
-      <div className='profile-content'>
-        <div className='profile-header'>
-          <div className='profile-header-section'>
-            <div className='profile-icon-container'>
-              {user.images.length ? (
-                <img
-                  draggable='false'
-                  src={user.images[0].url}
-                  alt='User Icon'
-                />
-              ) : (
-                <AccountCircleOutlinedIcon style={{ fontSize: '230px', color: 'rgb(107, 107, 107)' }} />
-              )}
-            </div>
-            <div className='profile-information'>
-              <p>PROFILE</p>
-              <h1>{user.display_name}</h1>
-              <div className='profile-detail'>
-                {renderPlaylists()}
-                <p style={{ userSelect: 'none' }}>•</p>
-                <p className='followers' style={{ userSelect: 'none' }}>
-                  {user.followers.total} {(user.followers.total === 1) ? 'Follower' : 'Followers'}
-                </p>
-              </div>
+      <div className='profile-header'>
+        <div className='profile-header-section'>
+          <div className='profile-icon-container'>
+            {user.images.length ? (
+              <img
+                draggable='false'
+                src={user.images[0].url}
+                alt='User Icon'
+              />
+            ) : (
+              <AccountCircleOutlinedIcon style={{ fontSize: '230px', color: 'rgb(107, 107, 107)' }} />
+            )}
+          </div>
+          <div className='profile-information'>
+            <p>PROFILE</p>
+            <h1>{user.display_name}</h1>
+            <div className='profile-detail'>
+              {renderPlaylists()}
+              <p style={{ userSelect: 'none' }}>•</p>
+              <p className='followers' style={{ userSelect: 'none' }}>
+                {user.followers.total} {(user.followers.total === 1) ? 'Follower' : 'Followers'}
+              </p>
             </div>
           </div>
         </div>

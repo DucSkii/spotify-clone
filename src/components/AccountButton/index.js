@@ -20,7 +20,7 @@ const AccountButton = (props) => {
   }
 
   return (
-    <div className='accountButton-container' id='accountButton' style={{ marginTop: `${open ? '35px' : ''}` }}>
+    <div className='accountButton-container' id='accountButton' style={{ marginTop: `${open ? '40px' : ''}` }}>
       <div className={`accountButton ${open ? 'selected-accountButton' : ''}`} onClick={toggleDropdown} id='accountButton'>
         <div className='account-user' id='accountButton'>
           <div className='accountIcon'>
@@ -28,6 +28,7 @@ const AccountButton = (props) => {
               <img
                 src={user.images[0].url}
                 alt='User Icon'
+                draggable='false'
               />
             ) : (
               <AccountCircleOutlinedIcon className='accountIcon-none' style={{ fontSize: '35px' }} />

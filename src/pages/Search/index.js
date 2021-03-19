@@ -6,10 +6,7 @@ const Search = () => {
 
   return (
     <div className='search'>
-      <div className='search-background' />
-      <div className='search-content'>
-        <h1>SEARCH PAGE</h1>
-      </div>
+      <h1>SEARCH PAGE</h1>
     </div>
   )
 }
