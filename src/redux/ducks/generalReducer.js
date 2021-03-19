@@ -22,14 +22,27 @@ export const closeDropdown = () => {
   }
 }
 
+export const setSpotifyOpen = (spotifyOpen) => {
+  return {
+    type: 'SET_SPOTIFY_OPEN',
+    spotifyOpen,
+  }
+}
+
 const initialState = {
   open: false,
   coverOpen: false,
+  spotifyOpen: false,
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_SPOTIFY_OPEN':
+      return {
+        ...state,
+        spotifyOpen: action.spotifyOpen,
+      }
     case 'SET_COVER_TRUE':
       return {
         ...state,

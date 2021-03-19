@@ -18,7 +18,7 @@ const Footer = ({ spotify }) => {
   const repeat = useSelector(state => state.user.repeat)
   const volume = useSelector(state => state.user.volume)
   const progress = useSelector(state => state.user.progress)
-
+  
   if (!item) {
     return null
   }

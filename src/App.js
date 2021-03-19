@@ -4,6 +4,7 @@ import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
+import { setSpotifyOpen } from './redux/ducks/generalReducer'
 import {
   setUser,
   setToken,
@@ -30,6 +31,7 @@ const App = () => {
   const open = useSelector(state => state.general.open)
   const playing = useSelector(state => state.user.playing)
   const progress = useSelector(state => state.user.progress)
+  const spotifyOpen = useSelector(state => state.general.spotifyOpen)
 
   const [count, setCount] = useState(0)
 
@@ -57,11 +59,22 @@ const App = () => {
       })
 
       s.getMyCurrentPlaybackState().then(song => {
-        dispatch(setPlaying(song.is_playing))
-        dispatch(setItem(song.item))
-        dispatch(setShuffle(song.shuffle_state))
-        dispatch(setRepeat(song.repeat_state))
-        dispatch(setProgress(song.progress_ms))
+        if (song.length === undefined) {
+          dispatch(setSpotifyOpen(true))
+          dispatch(setPlaying(song.is_playing))
+          dispatch(setItem(song.item))
+          dispatch(setShuffle(song.shuffle_state))
+          dispatch(setRepeat(song.repeat_state))
+          dispatch(setProgress(song.progress_ms))
+        } else {
+          s.getMyRecentlyPlayedTracks().then(tracks => {
+            console.log('tracks', tracks)
+            dispatch(setItem(tracks.items[0].track))
+            s.setRepeat('context')
+            s.setShuffle(false)
+            dispatch(setProgress(0))
+          })
+        }
       })
 
       s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
@@ -70,25 +83,34 @@ const App = () => {
 
       s.getMyDevices().then((res) => {
         const device = res.devices.filter(device => device.is_active === true)
-        dispatch(setVolume(device[0].volume_percent))
+        if (device.length) {
+          dispatch(setVolume(device[0].volume_percent))
+        } else {
+          s.setVolume(50)
+          dispatch(setVolume(50))
+          setProgress(0)
+        }
       })
     }
   }, [token, dispatch])
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => playing && setCount(count + 1), 3e3)
-  //   return () => {
-  //     clearInterval(timer)
-  //     s.getMyCurrentPlayingTrack().then(track => {
-  //       dispatch(setProgress(track.progress_ms))
-  //     })
-  //     if (progress <= 5000) {
-  //       s.getMyCurrentPlayingTrack().then(track => {
-  //         dispatch(setItem(track.item))
-  //       })
-  //     }
-  //   }
-  // })
+  useEffect(() => {
+    const timer = setInterval(() => playing && setCount(count + 1), 3e3)
+    return () => {
+      clearInterval(timer)
+      if (!playing) {
+        return null
+      }
+      s.getMyCurrentPlayingTrack().then(track => {
+        dispatch(setProgress(track.progress_ms))
+      })
+      if (progress <= 5000) {
+        s.getMyCurrentPlayingTrack().then(track => {
+          dispatch(setItem(track.item))
+        })
+      }
+    }
+  })
 
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {

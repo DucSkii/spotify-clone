@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setPlaying, setItem, setShuffle, setRepeat, setProgress } from '../../../redux/ducks/userReducer'
 import ShuffleIcon from '@material-ui/icons/Shuffle'
 import SkipNextIcon from '@material-ui/icons/SkipNext'
@@ -16,6 +16,7 @@ const Control = ({ playing, spotify, shuffle, repeat, item, progress }) => {
 
   const dispatch = useDispatch()
 
+  const spotifyOpen = useSelector(state => state.general.spotifyOpen)
   const [hovered, setHovered] = useState(false)
 
   const handlePause = () => {
@@ -73,6 +74,10 @@ const Control = ({ playing, spotify, shuffle, repeat, item, progress }) => {
     }
   }
 
+  const handleAlert = () => {
+    window.alert('Please open up spotify to use this feature')
+  }
+
   return (
     <div className='control'>
       <div className='control-buttons'>
@@ -86,9 +91,9 @@ const Control = ({ playing, spotify, shuffle, repeat, item, progress }) => {
           className='control-button'
           fontSize='small'
           style={{ marginRight: '28px' }}
-          onClick={skipPrevious}
+          onClick={spotifyOpen ? skipPrevious : handleAlert}
         />
-        <div className='play-icon' onClick={handlePause}>
+        <div className='play-icon' onClick={spotifyOpen ? handlePause : handleAlert}>
           {playing ? (
             <PauseIcon fontSize='small' />
           ) : (
@@ -99,7 +104,7 @@ const Control = ({ playing, spotify, shuffle, repeat, item, progress }) => {
           className='control-button'
           fontSize='small'
           style={{ marginLeft: '28px' }}
-          onClick={skipNext}
+          onClick={spotifyOpen ? skipNext : handleAlert}
         />
         {repeat === 'track' ? (
           <RepeatOneIcon

@@ -6,7 +6,7 @@ const initialState = {
   top_artists: null,
   playing: false,
   shuffle: false,
-  repeat: null,
+  repeat: 'off',
   volume: null,
   item: null,
   token: null,
