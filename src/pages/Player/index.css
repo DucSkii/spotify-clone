@@ -6,4 +6,5 @@
 .player_body {
   width: calc(100vw - 232.86px);
   margin-top: 60px;
+  background-color: rgb(25, 25, 25);
 }

@@ -26,7 +26,10 @@ const Player = ({ spotify }) => {
   }
 
   return (
-    <div className='player'>
+    <div
+      className='player'
+      style={{ backgroundColor: `${pathname === `/user/${user.display_name}` ? 'rgb(36, 36, 36)' : ''}` }}
+    >
       <Footer spotify={spotify} />
       <div className='player_sidebar'>
         <SideBar pathname={pathname} />

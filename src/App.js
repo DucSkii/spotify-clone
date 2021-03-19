@@ -49,10 +49,6 @@ const App = () => {
         dispatch(setUser(user))
       })
 
-      s.getArtist('64tJ2EAv1R6UaZqc4iOCyj').then(artist => {
-        console.log('artist', artist)
-      })
-
       s.getMyRecentlyPlayedTracks().then((response) => {
         dispatch(setRecentlyPlayed(response.items))
       })

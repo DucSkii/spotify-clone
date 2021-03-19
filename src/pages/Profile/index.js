@@ -10,6 +10,8 @@ const Profile = () => {
   const playlists = useSelector(state => state.user.playlists)
   const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
 
+  console.log('recentlyPlayed', recentlyPlayed)
+
   const renderPlaylists = () => {
     if (playlists.items) {
       const publicPlaylists = playlists.items.filter(playlist => playlist.public === true)
@@ -60,6 +62,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className='profile-body'>
+        <h1>Recently Played</h1>
       </div>
     </div>
   )
