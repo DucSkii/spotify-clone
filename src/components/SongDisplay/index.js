@@ -36,7 +36,7 @@ const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
       >
         <div className='songDisplay-image'>
           {hovered &&
-            <div className='songDisplay-play'>
+            <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
               <PlayArrowIcon />
             </div>
           }
@@ -64,7 +64,7 @@ const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
     >
       <div className='songDisplay-image'>
         {hovered &&
-          <div className='songDisplay-play'>
+          <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
             <PlayArrowIcon />
           </div>
         }
