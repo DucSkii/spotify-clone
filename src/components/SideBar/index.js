@@ -26,7 +26,7 @@ const SideBar = (props) => {
   const renderPlaylists = () => {
     return playlists?.items?.map((playlist, index) => {
       return (
-        <div key={index} className='sideBar-playlists-item'>{playlist.name}</div>
+        <div key={index} style={{ fontWeight: '700' }} className='sideBar-playlists-item'>{playlist.name}</div>
       )
     })
   }
