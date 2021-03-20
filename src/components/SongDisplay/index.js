@@ -58,7 +58,7 @@ const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
   }
 
   return (
-    <Link to='/track' style={{ textDecoration: 'none' }}>
+    <Link to={`/track/${songId}`} style={{ textDecoration: 'none' }}>
       <div
         className='songDisplay'
         onMouseOver={() => setHovered(true)}

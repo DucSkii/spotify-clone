@@ -37,7 +37,7 @@ const Player = ({ spotify }) => {
       </div>
       <div
         className='player_body'
-        style={{ marginTop: `${pathname === '/track' ? '0' : ''} ` }}
+        style={{ marginTop: `${pathname.split('/')[1] === 'track' ? '0' : ''} ` }}
       >
         <Header />
         <Switch>

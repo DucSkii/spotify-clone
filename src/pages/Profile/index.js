@@ -13,8 +13,6 @@ const Profile = () => {
   const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
   const [hovered, setHovered] = useState(false)
 
-  console.log('recentlyPlayed', recentlyPlayed)
-
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])

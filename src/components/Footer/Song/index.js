@@ -1,11 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { openCover } from '../../../redux/ducks/generalReducer'
 import ExpandLessOutlinedIcon from '@material-ui/icons/ExpandLessOutlined'
 
 import './index.css'
 
-const Song = ({ cover, artists, song }) => {
+const Song = ({ cover, artists, song, id }) => {
 
   const dispatch = useDispatch()
   const coverOpen = useSelector(state => state.general.coverOpen)
@@ -45,7 +46,9 @@ const Song = ({ cover, artists, song }) => {
         </div>
       }
       <div className={`song-desc ${coverOpen ? 'removeMargin' : ''}`}>
-        <p>{song}</p>
+        <Link to={`/track/${id}`} className='songLink'>
+          <p>{song}</p>
+        </Link>
         <div className='song-desc-artists'>
           {renderArtists()}
         </div>

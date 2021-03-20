@@ -31,6 +31,7 @@ const Footer = ({ spotify }) => {
             cover={item.album.images[0].url}
             song={item.name}
             artists={item.artists.map(artist => artist.name)}
+            id={item.id}
           />
         </div>
         <div className='footer-volume'>
