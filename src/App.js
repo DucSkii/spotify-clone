@@ -49,6 +49,8 @@ const App = () => {
         dispatch(setUser(user))
       })
 
+      s.getMyDevices().then(track => console.log('track', track))
+
       s.getMyRecentlyPlayedTracks().then((response) => {
         dispatch(setRecentlyPlayed(response.items))
       })
@@ -101,6 +103,10 @@ const App = () => {
   //     if (!playing) {
   //       return null
   //     }
+  //     s.getMyDevices().then(device => {
+  //       const volumeDevice = device.devices.filter(device => device.is_active === true)
+  //       dispatch(setVolume(volumeDevice[0].volume_percent))
+  //     })
   //     s.getMyCurrentPlayingTrack().then(track => {
   //       dispatch(setProgress(track.progress_ms))
   //     })
