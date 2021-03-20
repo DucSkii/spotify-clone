@@ -90,7 +90,6 @@ const App = () => {
         } else {
           s.setVolume(50)
           dispatch(setVolume(50))
-          setProgress(0)
         }
       })
     }
