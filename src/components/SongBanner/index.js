@@ -18,7 +18,7 @@ const SongBanner = ({ songName, image, duration }) => {
           </div>
           <div className='song-title'>
             <h1>{songName}</h1>
-            <p>{millisecondsToMinutes(duration)}</p>
+            <p style={{ marginTop: '10px' }}>{millisecondsToMinutes(duration)}</p>
           </div>
         </div>
         <img
