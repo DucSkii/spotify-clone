@@ -16,6 +16,7 @@ const SongPage = () => {
   const spotify = useSelector(state => state.user.spotify)
 
   useEffect(() => {
+    setArtists([])
     window.scrollTo(0, 0)
     spotify.getTrack(location.pathname.split('/')[2]).then(track => {
       track.artists.forEach((artist) => {
