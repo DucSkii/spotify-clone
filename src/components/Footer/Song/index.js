@@ -14,18 +14,35 @@ const Song = ({ cover, artists, song, id }) => {
   const renderArtists = () => {
     if (artists?.length === 1) {
       return (
-        <p>{artists[0]}</p>
+        <Link
+          to={`/artist/${artists[0].id}`}
+          className='song-desc-artists-last'
+        >
+          <p>{artists[0].name}</p>
+        </Link>
       )
     }
     return artists?.map((artist, index) => {
       if (index === artists.length - 1) {
         return (
-          <p key={index}>{artist}</p>
+          <Link
+            to={`/artist/${artist.id}`}
+            className='song-desc-artists-last'
+          >
+            <p key={index}>{artist.name}</p>
+          </Link>
         )
       }
       return (
         <div key={index} className='song-desc-artists'>
-          <p>{artist}</p>,
+          <Link
+            to={`/artist/${artist.id}`}
+            className='song-desc-artists'
+            style={{ textDecoration: 'none' }}
+          >
+            <p>{artist.name}</p>
+          </Link>
+          ,
         </div>
       )
     })

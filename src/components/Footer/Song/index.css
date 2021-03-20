@@ -30,6 +30,19 @@
   color: rgb(206, 206, 206);  
 }
 
+.song-desc-artists-last {
+  margin: 0px;
+  font-size: 10px;
+  cursor: pointer;
+  color: rgb(206, 206, 206);  
+  text-decoration: none;
+}
+
+.song-desc-artists-last:hover {
+  text-decoration: underline;
+  color: white;
+}
+
 .song-desc-artists > p {
   margin: 0px;
   font-size: 10px;

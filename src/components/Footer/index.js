@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
@@ -18,7 +18,23 @@ const Footer = ({ spotify }) => {
   const repeat = useSelector(state => state.user.repeat)
   const volume = useSelector(state => state.user.volume)
   const progress = useSelector(state => state.user.progress)
-  
+
+  const [artists, setArtists] = useState([])
+
+  useEffect(() => {
+    if (item) {
+      let artistArr = []
+      item?.artists?.forEach(artist => {
+        let artistObj = {
+          name: artist.name,
+          id: artist.id,
+        }
+        artistArr.push(artistObj)
+      })
+      setArtists(artistArr)
+    }
+  }, [item])
+
   if (!item) {
     return null
   }
@@ -30,7 +46,7 @@ const Footer = ({ spotify }) => {
           <Song
             cover={item.album.images[0].url}
             song={item.name}
-            artists={item.artists.map(artist => artist.name)}
+            artists={artists}
             id={item.id}
           />
         </div>
