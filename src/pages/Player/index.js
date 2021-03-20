@@ -9,6 +9,7 @@ import YourLibrary from '../YourLibrary'
 import Profile from '../Profile'
 import Footer from '../../components/Footer'
 import SongPage from '../SongPage'
+import Artist from '../Artist'
 
 import './index.css'
 
@@ -41,6 +42,7 @@ const Player = ({ spotify }) => {
       >
         <Header />
         <Switch>
+          <Route path='/artist' component={Artist} />
           <Route path='/track' component={SongPage} />
           <Route path='/user' component={Profile} />
           <Route path='/Search' component={Search} />
