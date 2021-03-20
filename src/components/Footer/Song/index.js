@@ -34,7 +34,7 @@ const Song = ({ cover, artists, song, id }) => {
         )
       }
       return (
-        <div key={index} className='song-desc-artists'>
+        <div key={index} className='song-desc-artists-container'>
           <Link
             to={`/artist/${artist.id}`}
             className='song-desc-artists'
