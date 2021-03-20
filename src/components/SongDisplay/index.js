@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
-const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
+const SongDisplay = ({ image, songName, artists, songId, artistId, artist = false }) => {
 
   const [hovered, setHovered] = useState(false)
 
@@ -30,30 +30,35 @@ const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
 
   if (artist) {
     return (
-      <div
-        className='songDisplay'
-        onMouseOver={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <div className='songDisplay-image'>
-          {hovered &&
-            <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
-              <PlayArrowIcon />
+      <Link
+       to={`/artist/${artistId}`} 
+       style={{ textDecoration: 'none', width: '100%', height: '100%', padding: '0px 17px'}}
+       >
+        <div
+          className='songDisplay'
+          onMouseOver={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <div className='songDisplay-image'>
+            {hovered &&
+              <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
+                <PlayArrowIcon />
+              </div>
+            }
+            <img
+              src={image}
+              alt='Song Cover'
+              draggable='false'
+            />
+          </div>
+          <div className='songDisplay-info'>
+            {artists}
+            <div className='songDisplay-artists'>
+              <p style={{ fontSize: '13px' }}>Artist</p>
             </div>
-          }
-          <img
-            src={image}
-            alt='Song Cover'
-            draggable='false'
-          />
-        </div>
-        <div className='songDisplay-info'>
-          {artists}
-          <div className='songDisplay-artists'>
-            <p style={{ fontSize: '13px' }}>Artist</p>
           </div>
         </div>
-      </div>
+      </Link>
     )
   }
 
