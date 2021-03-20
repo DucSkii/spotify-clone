@@ -30,7 +30,10 @@ const Player = ({ spotify }) => {
   return (
     <div
       className='player'
-      style={{ backgroundColor: `${pathname.split('/')[1] === 'user' ? 'rgb(36, 36, 36)' : ''}` }}
+      style={{
+        backgroundColor:
+          `${(pathname.split('/')[1] === 'user') || (pathname.split('/')[1] === 'artist') ? 'rgb(36, 36, 36)' : ''}`
+      }}
     >
       <Footer spotify={spotify} />
       <div className='player_sidebar'>
