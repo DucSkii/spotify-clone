@@ -1,0 +1,53 @@
+.song-banner {
+  width: 100%;
+  height: 40vh;
+  min-height: 280px;
+}
+
+.song-image {
+  width: 150px;
+  min-height: 150px;
+  margin-top: 40px;
+}
+
+.song-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.song-title {
+  width: 100%; 
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.song-header-banner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.song-header-banner > div  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 40vh;
+  min-height: 280px;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+.song-header-banner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

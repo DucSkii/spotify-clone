@@ -8,6 +8,7 @@ import Search from '../Search'
 import YourLibrary from '../YourLibrary'
 import Profile from '../Profile'
 import Footer from '../../components/Footer'
+import SongPage from '../SongPage'
 
 import './index.css'
 
@@ -34,9 +35,13 @@ const Player = ({ spotify }) => {
       <div className='player_sidebar'>
         <SideBar pathname={pathname} />
       </div>
-      <div className='player_body'>
+      <div
+        className='player_body'
+        style={{ marginTop: `${pathname === '/track' ? '0' : ''} ` }}
+      >
         <Header />
         <Switch>
+          <Route path='/track' component={SongPage} />
           <Route path='/user' component={Profile} />
           <Route path='/Search' component={Search} />
           <Route path='/Your Library' component={YourLibrary} />

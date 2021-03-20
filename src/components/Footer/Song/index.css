@@ -37,6 +37,7 @@
 .song-desc-artists {
   display: flex;
   align-items: center;
+  color: rgb(206, 206, 206);  
 }
 
 .song-desc-artists > p {
@@ -47,6 +48,7 @@
 
 .song-desc-artists > p:hover {
   text-decoration: underline;
+  color: white;
 }
 
 .circleIcon {

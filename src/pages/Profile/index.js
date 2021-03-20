@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SongDisplay from '../../components/SongDisplay'
@@ -14,6 +14,10 @@ const Profile = () => {
   const [hovered, setHovered] = useState(false)
 
   console.log('recentlyPlayed', recentlyPlayed)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const renderPlaylists = () => {
     if (playlists.items) {

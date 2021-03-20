@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import { Link } from 'react-router-dom'
 
 import './index.css'
 
@@ -57,30 +58,32 @@ const SongDisplay = ({ image, songName, artists, songId, artist = false }) => {
   }
 
   return (
-    <div
-      className='songDisplay'
-      onMouseOver={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className='songDisplay-image'>
-        {hovered &&
-          <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
-            <PlayArrowIcon />
+    <Link to='/track' style={{ textDecoration: 'none' }}>
+      <div
+        className='songDisplay'
+        onMouseOver={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div className='songDisplay-image'>
+          {hovered &&
+            <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
+              <PlayArrowIcon />
+            </div>
+          }
+          <img
+            src={image}
+            alt='Song Cover'
+            draggable='false'
+          />
+        </div>
+        <div className='songDisplay-info'>
+          {songName}
+          <div className='songDisplay-artists'>
+            {renderArtists()}
           </div>
-        }
-        <img
-          src={image}
-          alt='Song Cover'
-          draggable='false'
-        />
-      </div>
-      <div className='songDisplay-info'>
-        {songName}
-        <div className='songDisplay-artists'>
-          {renderArtists()}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

@@ -9,10 +9,9 @@ const initialState = {
   repeat: 'off',
   volume: null,
   item: null,
-  token: null,
   progress: null,
   recentlyPlayed: [],
-  // token: 'BQARjfHesu8uSz5nv3lXVJeQN404FLsRQorsebaSnuSzotf7XiUQk_fXZGEMx_dLWrV8a7GogAC8zt3s17tRt0LfRBUGFTcCEWqnALOoLMs-YvH6LYQU9pMdrHDKeeO0juiL1hjO_MowxpeZ34cyAvauUb9FzuKQ',
+  token: null,
 }
 
 export const setRecentlyPlayed = (recentlyPlayed) => {
