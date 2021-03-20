@@ -57,6 +57,10 @@ const App = () => {
         dispatch(setPlaylists(playlists))
       })
 
+      s.getTrack('3dPtXHP0oXQ4HCWHsOA9js').then(track => {
+        console.log('track', track)
+      })
+
       s.getMyCurrentPlaybackState().then(song => {
         if (song.length === undefined) {
           console.log('song', song)
@@ -93,7 +97,7 @@ const App = () => {
       })
     }
   }, [token, dispatch])
-  
+
   // useEffect(() => {
   //   const timer = setInterval(() => playing && setCount(count + 1), 3e3)
   //   return () => {

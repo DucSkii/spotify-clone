@@ -10,4 +10,5 @@ export default {
 export const Default = () => <SongBanner
   songName='夜に駆ける'
   image='https://images-na.ssl-images-amazon.com/images/I/71IywUSFmTL._AC_UL600_SR600,600_.jpg'
+  duration={261013}
 />
