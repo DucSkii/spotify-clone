@@ -53,7 +53,6 @@
 
 .artist-information > h1 {
   font-size: 45px;
-  cursor: pointer;
   user-select: none;
 }
 

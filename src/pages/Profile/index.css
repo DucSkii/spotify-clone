@@ -79,6 +79,7 @@
 
 .profile-detail {
   display: flex;
+  user-select: none;
 }
 
 .profile-detail > p {
