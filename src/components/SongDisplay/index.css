@@ -51,6 +51,7 @@
   flex-direction: column;
   font-weight: 700;
   user-select: none;
+  z-index: 10;
 }
 
 .songDisplay-artists {

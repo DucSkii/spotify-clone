@@ -5,6 +5,7 @@ import SongBanner from '../../components/SongBanner'
 import SongDisplay from '../../components/SongDisplay'
 
 import './index.css'
+import AlbumDisplay from '../../components/AlbumDisplay'
 
 const SongPage = () => {
 
@@ -13,12 +14,15 @@ const SongPage = () => {
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
   const [duration, setDuration] = useState(null)
+  const [album, setAlbum] = useState(null)
   const spotify = useSelector(state => state.user.spotify)
 
   useEffect(() => {
     setArtists([])
     window.scrollTo(0, 0)
     spotify.getTrack(location.pathname.split('/')[2]).then(track => {
+      console.log('track', track)
+      setAlbum(track.album)
       track.artists.forEach((artist) => {
         spotify.getArtist(artist.id).then(artist => {
           let artistObj = {
@@ -50,6 +54,10 @@ const SongPage = () => {
     })
   }
 
+  if (!album) {
+    return null
+  }
+
   return (
     <div className='songPage'>
       <SongBanner
@@ -61,6 +69,18 @@ const SongPage = () => {
         <h1>Artists</h1>
         <div className='song-artist-container'>
           {renderArtists()}
+        </div>
+        <div className='song-album'>
+          <h1>Album</h1>
+          <div className='song-album-item'>
+            <AlbumDisplay
+              title={album.name}
+              image={album.images[0].url}
+              releaseDate={album.release_date}
+              albumId={album.id}
+              albumType={album.album_type}
+            />
+          </div>
         </div>
       </div>
     </div>
