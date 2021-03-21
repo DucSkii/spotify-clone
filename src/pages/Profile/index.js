@@ -5,6 +5,8 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SongDisplay from '../../components/SongDisplay'
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined'
 import BackgroundGradient from '../../components/BackgroundGradient'
+import { usePalette } from 'react-palette'
+import noavatar from '../../images/noavatar.png'
 
 import './index.css'
 
@@ -16,11 +18,12 @@ const Profile = () => {
   const playlists = useSelector(state => state.user.playlists)
   const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
   const [hovered, setHovered] = useState(false)
+  const { data, loading, error } = usePalette(user.images.length ? user.images[0].url : noavatar)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    // dispatch(setBackgroundGradient('green'))
-  }, [dispatch])
+    dispatch(setBackgroundGradient(data.vibrant))
+  }, [dispatch, data])
 
   const renderPlaylists = () => {
     if (playlists.items) {

@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+import { setBackgroundGradient } from '../../redux/ducks/generalReducer'
 import AlbumDisplay from '../../components/AlbumDisplay'
 import BackgroundGradient from '../../components/BackgroundGradient'
+import { usePalette } from 'react-palette'
 
 import './index.css'
 
 const Artist = () => {
 
   const location = useLocation()
+  const dispatch = useDispatch()
   const spotify = useSelector(state => state.user.spotify)
   const [artist, setArtist] = useState(null)
   const [albums, setAlbums] = useState([])
+  const { data, loading, error } = usePalette(artist ? artist.images[0].url : null)
 
   useEffect(() => {
     spotify.getArtist(location.pathname.split('/')[2]).then(artist => {
       setArtist(artist)
       spotify.getArtistAlbums(artist.id).then(album => setAlbums(album.items))
+      dispatch(setBackgroundGradient(data.vibrant))
     })
-  }, [location.pathname, spotify])
+  }, [location.pathname, spotify, data, dispatch])
 
   if (!artist) {
     return null
