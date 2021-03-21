@@ -29,15 +29,28 @@ export const setSpotifyOpen = (spotifyOpen) => {
   }
 }
 
+export const setBackgroundGradient = (backgroundGradient) => {
+  return {
+    type: 'SET_BACKGROUND_GRADIENT',
+    backgroundGradient,
+  }
+}
+
 const initialState = {
   open: false,
   coverOpen: false,
   spotifyOpen: false,
+  backgroundGradient: 'rgb(69,23,3)',
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_BACKGROUND_GRADIENT':
+      return {
+        ...state,
+        backgroundGradient: action.backgroundGradient,
+      }
     case 'SET_SPOTIFY_OPEN':
       return {
         ...state,

@@ -41,13 +41,13 @@ const App = () => {
     if (_token) {
       s.setAccessToken(_token)
       dispatch(setToken(_token))
-      
+
       dispatch(setSpotify(s))
-      
+
       s.getMe().then((user) => {
         dispatch(setUser(user))
       })
-      
+
       s.getMyRecentlyPlayedTracks().then((response) => {
         dispatch(setRecentlyPlayed(response.items))
       })

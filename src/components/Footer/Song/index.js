@@ -28,6 +28,7 @@ const Song = ({ cover, artists, song, id }) => {
           <Link
             to={`/artist/${artist.id}`}
             className='song-desc-artists-last'
+            key={index}
           >
             <p key={index}>{artist.name}</p>
           </Link>
