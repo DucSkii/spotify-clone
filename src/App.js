@@ -38,19 +38,16 @@ const App = () => {
     const hash = getTokenFromUrl()
     window.location.hash = ''
     let _token = hash.access_token
-
     if (_token) {
       s.setAccessToken(_token)
       dispatch(setToken(_token))
-
+      
       dispatch(setSpotify(s))
-
+      
       s.getMe().then((user) => {
         dispatch(setUser(user))
       })
-
-      s.getMyDevices().then(track => console.log('track', track))
-
+      
       s.getMyRecentlyPlayedTracks().then((response) => {
         dispatch(setRecentlyPlayed(response.items))
       })

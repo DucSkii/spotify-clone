@@ -72,3 +72,74 @@
   font-size: 13px;
   font-weight: 700;
 }
+
+.artist-body {
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-body > h1 {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 25px;
+}
+
+.artist-albums {
+  display: grid;
+  width: calc(100% - 447px);
+  grid-template-columns: repeat(8, 12.5%);
+  grid-column-gap: 59px;
+}
+
+.artist-albums-item {
+  height: 240px;
+  margin-bottom: 70px;
+}
+
+@media only screen and (max-width: 1270px) {
+  .artist-icon-container {
+    width: 190px;
+  }
+  
+  .artist-header-section {
+    height: 190px;
+  }
+  }
+  
+  @media only screen and (max-width: 1870px) {
+    .artist-albums {
+      width: calc(100% - 388px);
+      grid-template-columns: repeat(7, 14.28%);
+    }
+  }
+  @media only screen and (max-width: 1690px) {
+    .artist-albums {
+      width: calc(100% - 329px);
+      grid-template-columns: repeat(6, 16.66%);
+    }
+  }
+  @media only screen and (max-width: 1490px) {
+    .artist-albums {
+      width: calc(100% - 270px);
+      grid-template-columns: repeat(5, 20%);
+    }
+  }
+  @media only screen and (max-width: 1288px) {
+    .artist-albums {
+      width: calc(100% - 211px);
+      grid-template-columns: repeat(4, 25%);
+    }
+  }
+  @media only screen and (max-width: 1083px) {
+    .artist-albums {
+      width: calc(100% - 152px);
+      grid-template-columns: repeat(3, 33.33%);
+    }
+  }
+  @media only screen and (max-width: 848px) {
+    .artist-albums {
+      width: calc(100% - 93px);
+      grid-template-columns: repeat(2, 50%);
+    }
+  }

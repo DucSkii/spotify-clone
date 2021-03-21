@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import PlayButton from '../PlayButton'
 import { Link } from 'react-router-dom'
+
 
 import './index.css'
 
@@ -31,9 +32,9 @@ const SongDisplay = ({ image, songName, artists, songId, artistId, artist = fals
   if (artist) {
     return (
       <Link
-       to={`/artist/${artistId}`} 
-       style={{ textDecoration: 'none', width: '100%', height: '100%', padding: '0px 17px'}}
-       >
+        to={`/artist/${artistId}`}
+        style={{ textDecoration: 'none', width: '100%', height: '100%', padding: '0px 17px' }}
+      >
         <div
           className='songDisplay'
           onMouseOver={() => setHovered(true)}
@@ -41,8 +42,8 @@ const SongDisplay = ({ image, songName, artists, songId, artistId, artist = fals
         >
           <div className='songDisplay-image'>
             {hovered &&
-              <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
-                <PlayArrowIcon />
+              <div className='songDisplay-play'>
+                <PlayButton />
               </div>
             }
             <img
@@ -71,8 +72,8 @@ const SongDisplay = ({ image, songName, artists, songId, artistId, artist = fals
       >
         <div className='songDisplay-image'>
           {hovered &&
-            <div className='songDisplay-play' onClick={() => window.alert('Not yet implemented')}>
-              <PlayArrowIcon />
+            <div className='songDisplay-play'>
+              <PlayButton />
             </div>
           }
           <img

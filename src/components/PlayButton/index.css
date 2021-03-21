@@ -1,0 +1,17 @@
+.playButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-color: #1db954;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+  box-shadow: 0px 7px 16px 0px rgba(0,0,0,0.46);
+  cursor: pointer;
+}
+
+.playButton:hover {
+  transform: scale(1.1);
+}
