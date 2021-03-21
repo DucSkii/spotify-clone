@@ -18,11 +18,11 @@ const Profile = () => {
   const playlists = useSelector(state => state.user.playlists)
   const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
   const [hovered, setHovered] = useState(false)
-  const { data, loading, error } = usePalette(user.images.length ? user.images[0].url : noavatar)
+  const { data } = usePalette(user.images.length ? user.images[0].url : noavatar)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    dispatch(setBackgroundGradient(data.vibrant))
+    dispatch(setBackgroundGradient(data.lightMuted))
   }, [dispatch, data])
 
   const renderPlaylists = () => {

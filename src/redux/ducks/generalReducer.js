@@ -40,7 +40,7 @@ const initialState = {
   open: false,
   coverOpen: false,
   spotifyOpen: false,
-  backgroundGradient: 'red',
+  backgroundGradient: 'rgb(69,23,3)',
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export

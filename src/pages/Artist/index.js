@@ -15,13 +15,13 @@ const Artist = () => {
   const spotify = useSelector(state => state.user.spotify)
   const [artist, setArtist] = useState(null)
   const [albums, setAlbums] = useState([])
-  const { data, loading, error } = usePalette(artist ? artist.images[0].url : null)
+  const { data } = usePalette(artist ? artist.images[0].url : null)
 
   useEffect(() => {
     spotify.getArtist(location.pathname.split('/')[2]).then(artist => {
       setArtist(artist)
       spotify.getArtistAlbums(artist.id).then(album => setAlbums(album.items))
-      dispatch(setBackgroundGradient(data.vibrant))
+      dispatch(setBackgroundGradient(data.lightMuted))
     })
   }, [location.pathname, spotify, data, dispatch])
 
