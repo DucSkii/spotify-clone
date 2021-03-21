@@ -74,6 +74,9 @@ const AlbumPage = () => {
           </div>
         </div>
       </div>
+      <div className='albumPage-body'>
+
+      </div>
     </div>
   )
 }

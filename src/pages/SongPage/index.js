@@ -19,7 +19,6 @@ const SongPage = () => {
 
   useEffect(() => {
     setArtists([])
-    window.scrollTo(0, 0)
     spotify.getTrack(location.pathname.split('/')[2]).then(track => {
       console.log('track', track)
       setAlbum(track.album)

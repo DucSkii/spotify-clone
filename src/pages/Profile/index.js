@@ -94,7 +94,7 @@ const Profile = () => {
             <h1>{user.display_name}</h1>
             <div className='profile-detail'>
               {renderPlaylists()}
-              <p style={{ userSelect: 'none' }}>•</p>
+              <p style={{ userSelect: 'none', color: 'rgb(177, 177, 177)' }}>•</p>
               <p className='followers' style={{ userSelect: 'none' }}>
                 {user.followers.total} {(user.followers.total === 1) ? 'Follower' : 'Followers'}
               </p>
