@@ -7,6 +7,7 @@ import './index.css'
 const Header = () => {
 
   const open = useSelector(state => state.general.open)
+  const backgroundColour = useSelector(state => state.general.backgroundGradient)
   const [style, setStyle] = useState({ opacity: '0' })
 
   window.onscroll = () => {
@@ -19,7 +20,9 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='header-colour' style={style} />
+      <div className='header-colour' style={style} >
+        <div style={{ width: '100%', height: '100%', backgroundColor: backgroundColour }} />
+      </div>
       <div className={open ? 'header-accountButton-open' : 'header-accountButton'} >
         <AccountButton username='ducvietdao' />
       </div>

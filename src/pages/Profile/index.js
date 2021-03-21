@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setBackgroundGradient } from '../../redux/ducks/generalReducer'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SongDisplay from '../../components/SongDisplay'
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined'
@@ -8,6 +9,8 @@ import './index.css'
 
 const Profile = () => {
 
+  const dispatch = useDispatch()
+
   const user = useSelector(state => state.user.user)
   const playlists = useSelector(state => state.user.playlists)
   const recentlyPlayed = useSelector(state => state.user.recentlyPlayed)
@@ -15,6 +18,7 @@ const Profile = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    // dispatch(setBackgroundGradient('green'))
   }, [])
 
   const renderPlaylists = () => {
