@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import AlbumDisplay from '../../components/AlbumDisplay'
+import BackgroundGradient from '../../components/BackgroundGradient'
 
 import './index.css'
 
@@ -42,6 +43,7 @@ const Artist = () => {
 
   return (
     <div className='artist'>
+      <BackgroundGradient />
       <div className='artist-header'>
         <div className='artist-header-section'>
           <div className='artist-icon-container'>

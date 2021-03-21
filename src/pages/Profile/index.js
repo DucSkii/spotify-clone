@@ -4,6 +4,7 @@ import { setBackgroundGradient } from '../../redux/ducks/generalReducer'
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import SongDisplay from '../../components/SongDisplay'
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined'
+import BackgroundGradient from '../../components/BackgroundGradient'
 
 import './index.css'
 
@@ -19,7 +20,7 @@ const Profile = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
     // dispatch(setBackgroundGradient('green'))
-  }, [])
+  }, [dispatch])
 
   const renderPlaylists = () => {
     if (playlists.items) {
@@ -61,6 +62,7 @@ const Profile = () => {
 
   return (
     <div className='profile'>
+      <BackgroundGradient />
       <div className='profile-header'>
         <div className='profile-header-section'>
           <div className='profile-icon-container'>
