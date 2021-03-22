@@ -4,6 +4,9 @@ import { useLocation, Link } from 'react-router-dom'
 import { usePalette } from 'react-palette'
 import { setBackgroundGradient } from '../../redux/ducks/generalReducer'
 import BackgroundGradient from '../../components/BackgroundGradient'
+import PlayButton from '../../components/PlayButton'
+import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import SongComponent from '../../components/SongComponent'
 
 import './index.css'
 
@@ -33,6 +36,33 @@ const AlbumPage = () => {
       })
     })
   }, [location.pathname, spotify, data, dispatch])
+
+  const renderTracks = () => {
+    return albumTracks.map((track, index) => {
+      let artistsArr = []
+      track.artists.forEach(artist => {
+        let artistObj = {
+          name: artist.name,
+          id: artist.id
+        }
+        artistsArr.push(artistObj)
+      })
+
+      return (
+        <div key={index}>
+          <SongComponent
+            index={index + 1}
+            songName={track.name}
+            songId={track.id}
+            duration={track.duration_ms}
+            artists={artistsArr}
+            album={album.name}
+            albumId={album.id}
+          />
+        </div>
+      )
+    })
+  }
 
   if (!album) {
     return null
@@ -75,7 +105,26 @@ const AlbumPage = () => {
         </div>
       </div>
       <div className='albumPage-body'>
-
+        <div className='albumPage-body-header'>
+          <PlayButton
+            dimensions='60px'
+            size='40px'
+          />
+        </div>
+        <div className='albumPage-songs'>
+          <div className='albumPage-songs-header'>
+            <p style={{ width: '3%', textAlign: 'center' }}>#</p>
+            <p style={{ width: '42%' }}>TITLE</p>
+            <p style={{ width: '1%' }} />
+            <p style={{ width: '24%' }}>ARTIST</p>
+            <p style={{ width: '1%' }} />
+            <p style={{ width: '24%' }}>ALBUM</p>
+            <p style={{ width: '5%', textAlign: 'center' }}>
+              <AccessTimeIcon />
+            </p>
+          </div>
+          {renderTracks()}
+        </div>
       </div>
     </div>
   )

@@ -1,0 +1,54 @@
+.songComponent {
+  width: 100%;
+  height: 50px;
+  max-height: 50px;
+  white-space: nowrap;
+  color: rgb(177, 177, 177);
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.songComponent:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.songComponent > p {
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+.songComponent-artist {
+  font-size: 15px;
+  overflow-x: hidden;
+  display: flex;
+  color: rgb(177, 177, 177);
+  text-decoration: none;
+  align-items: center;
+}
+
+.songComponent-artist > p:hover {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.songComponent-album {
+  font-size: 15px;
+  overflow-x: hidden;
+  display: flex;
+  text-decoration: none;
+  color: rgb(177, 177, 177);
+  align-items: center;
+}
+
+.songComponent-album > p:hover {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.songComponent-comma {
+  margin-right: 3px;
+}
