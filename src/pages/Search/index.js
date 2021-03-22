@@ -11,6 +11,9 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
+    if (search === '') {
+      setSearchResults([])
+    }
     spotify.searchTracks(search).then(res => {
       setSearchResults(res.tracks.items)
     })
