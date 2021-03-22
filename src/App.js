@@ -73,7 +73,7 @@ const App = () => {
           })
         }
       })
-
+      
       s.getPlaylist("37i9dQZEVXcFWEafQgSYVF").then((response) =>
         dispatch(setDiscoverWeekly(response))
       )
