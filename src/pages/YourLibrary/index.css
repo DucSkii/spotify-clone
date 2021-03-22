@@ -3,9 +3,15 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
 }
 
 .yourlibrary > h1 {
+  color: white;
+}
+
+.yourlibrary-body {
+  padding: 0px 25px;
+  display: flex;
+  flex-direction: column;
   color: white;
 }

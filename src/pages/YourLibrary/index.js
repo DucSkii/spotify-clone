@@ -6,7 +6,10 @@ const YourLibrary = () => {
 
   return (
     <div className='yourlibrary'>
-        <h1>YOUR LIBRARY</h1>
+      <h1>Playlists</h1>
+      <div className='yourlibrary-body'>
+asd
+      </div>
     </div>
   )
 }
