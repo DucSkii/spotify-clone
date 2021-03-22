@@ -20,7 +20,8 @@ const PlaylistPage = () => {
   const [playlist, setPlaylist] = useState(null)
   const [playlistTracks, setPlaylistTracks] = useState([])
   const [songTotal, setSongTotal] = useState(null)
-  const { data } = usePalette(user.images[0].url)
+  const { data } = usePalette(user.images.length ? user.images[0].url : 'https://i.gyazo.com/94226ff56d23f634f83e46ddeeb2b964.png')
+  const image = user.images.length ? user.images[0].url : 'https://i.gyazo.com/94226ff56d23f634f83e46ddeeb2b964.png'
 
   useEffect(() => {
     let playlistId = location.pathname.split('/')[2]
@@ -85,7 +86,7 @@ const PlaylistPage = () => {
               >
                 <div className='userLink'>
                   <img
-                    src={user.images[0].url}
+                    src={image}
                     alt='Artist Icon'
                     draggable='false'
                   />

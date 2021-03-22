@@ -8,6 +8,7 @@ const YourLibrary = () => {
 
   const user = useSelector(state => state.user.user)
   const playlists = useSelector(state => state.user.playlists)
+  const image = user.images.length ? user.images[0].url : 'https://i.gyazo.com/94226ff56d23f634f83e46ddeeb2b964.png'
 
   const renderPlaylists = () => {
     return playlists?.items.map((playlist, index) => {
@@ -17,7 +18,7 @@ const YourLibrary = () => {
             title={playlist.name}
             albumId={playlist.id}
             playlist={true}
-            image={user.images[0].url}
+            image={image}
             name={user.display_name}
           />
         </div>
