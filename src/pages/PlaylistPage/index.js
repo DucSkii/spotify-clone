@@ -71,7 +71,7 @@ const PlaylistPage = () => {
         <div className='playlistPage-header-section'>
           <div className='playlistPage-icon-container'>
             <img
-              src={user.images[0].url}
+              src={image}
               alt='Playlist Cover'
               draggable='false'
             />
