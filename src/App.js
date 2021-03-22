@@ -58,7 +58,6 @@ const App = () => {
 
       s.getMyCurrentPlaybackState().then(song => {
         if (song.length === undefined) {
-          console.log('song', song)
           dispatch(setSpotifyOpen(true))
           dispatch(setPlaying(song.is_playing))
           dispatch(setItem(song.item))
@@ -67,7 +66,6 @@ const App = () => {
           dispatch(setProgress(song.progress_ms))
         } else {
           s.getMyRecentlyPlayedTracks().then(tracks => {
-            console.log('tracks', tracks)
             dispatch(setItem(tracks.items[0].track))
             s.setRepeat('context')
             s.setShuffle(false)
@@ -76,7 +74,7 @@ const App = () => {
         }
       })
 
-      s.getPlaylist("37i9dQZEVXcJZyENOWUFo7").then((response) =>
+      s.getPlaylist("37i9dQZEVXcFWEafQgSYVF").then((response) =>
         dispatch(setDiscoverWeekly(response))
       )
 
