@@ -19,7 +19,7 @@ _**The goal of this project was to make a spotify clone as closely identical as 
 
 ![Alt Text](https://i.gyazo.com/2e2d18947651aac8576b4cb05c556ba9.png)
 
-_The website for this project is **NOT RESPONSIVE** to small screen devices, to view this project you must have a real spotify account._
+_To view this project you must have a real spotify account._
 *The app has no audio features and the footer controls can only be used when the user has spotify open on any device.*
 
 This project was fully deployed using firebase,

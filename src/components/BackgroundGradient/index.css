@@ -1,7 +1,9 @@
 .backgroundGradient {
+  left: 232.86px;
   position: absolute;
   height: 95vh;
-  width: 100%;
+  width: calc(100% - 232.86px);
+  min-width: 800px;
   top: 0;
   right: 0;
 }

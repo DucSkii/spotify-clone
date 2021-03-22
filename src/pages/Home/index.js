@@ -15,7 +15,7 @@ const Home = () => {
   const user = useSelector(state => state.user.user)
   const discoverWeekly = useSelector(state => state.user.discover_weekly)
   const [discoverWeeklyTracks, setDiscoverWeeklyTracks] = useState([])
-  const image = user.images.length ? user.image[0].url : 'https://i.gyazo.com/94226ff56d23f634f83e46ddeeb2b964.png'
+  const image = user.images.length ? user.images[0].url : 'https://i.gyazo.com/94226ff56d23f634f83e46ddeeb2b964.png'
 
   useEffect(() => {
     dispatch(setBackgroundGradient('rgb(69,23,3)'))
@@ -25,7 +25,7 @@ const Home = () => {
   const renderPlaylists = () => {
     return playlists?.items?.map((playlist, index) => {
       return (
-        <div key={index} style={{ marginRight: '25px' }}>
+        <div key={index} style={{ marginRight: '25px', marginBottom: '25px' }}>
           <PlaylistDisplay
             playlistName={playlist.name}
             playlistId={playlist.id}

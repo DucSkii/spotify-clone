@@ -31,26 +31,26 @@ const Player = ({ spotify }) => {
 
   return (
     <div className='player'>
-      <Footer spotify={spotify} />
-      <div className='player_sidebar'>
+      <div style={{ display: 'flex', width: '100%' }}>
         <SideBar pathname={pathname} />
+        <div
+          className='player_body'
+          style={{ marginTop: `${pathname.split('/')[1] === 'track' ? '0' : ''} ` }}
+        >
+          <Header />
+          <Switch>
+            <Route path='/playlist' component={PlaylistPage} />
+            <Route path='/album' component={AlbumPage} />
+            <Route path='/artist' component={Artist} />
+            <Route path='/track' component={SongPage} />
+            <Route path='/user' component={Profile} />
+            <Route path='/Search' component={Search} />
+            <Route path='/Your Library' component={YourLibrary} />
+            <Route exact path='/' component={Home} />
+          </Switch>
+        </div>
       </div>
-      <div
-        className='player_body'
-        style={{ marginTop: `${pathname.split('/')[1] === 'track' ? '0' : ''} ` }}
-      >
-        <Header />
-        <Switch>
-          <Route path='/playlist' component={PlaylistPage} />
-          <Route path='/album' component={AlbumPage} />
-          <Route path='/artist' component={Artist} />
-          <Route path='/track' component={SongPage} />
-          <Route path='/user' component={Profile} />
-          <Route path='/Search' component={Search} />
-          <Route path='/Your Library' component={YourLibrary} />
-          <Route exact path='/' component={Home} />
-        </Switch>
-      </div>
+      <Footer spotify={spotify} />
     </div>
   )
 }

@@ -1,11 +1,12 @@
 .player {
   display: flex;
-  justify-content: space-between;
   margin-bottom: 115px;
 }
 
 .player_body {
+  margin-left: 232.86px;
   width: calc(100vw - 232.86px);
   margin-top: 60px;
+  min-width: 800px;
   background-color: rgb(25, 25, 25);
 }
