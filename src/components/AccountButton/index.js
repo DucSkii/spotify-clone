@@ -34,7 +34,7 @@ const AccountButton = (props) => {
               <AccountCircleOutlinedIcon className='accountIcon-none' style={{ fontSize: '35px' }} />
             )}
           </div>
-          <p>{props.username}</p>
+          <p style={{ maxWidth: '77px', overflowX: 'hidden' }}>{props.username}</p>
         </div>
         <div className='arrow' id='accountButton'>
           {open ? (
