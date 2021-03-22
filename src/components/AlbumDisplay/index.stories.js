@@ -14,3 +14,11 @@ export const Default = () => <AlbumDisplay
   albumId='4GrFuXwRmEBJec22p58fsD'
   albumType='album'
 />
+
+export const Playlist = () => <AlbumDisplay
+  title="duc's playlist"
+  image='https://i.scdn.co/image/ab6775700000ee8594477ce232d9f0805d73de5e'
+  playlist={true}
+  name='ducvietdao'
+  albumId='5M9LmN6F7uaCUdTWOGIvRG'
+/>

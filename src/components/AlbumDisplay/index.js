@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
-const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId }) => {
+const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId, playlist = false, name }) => {
   // https://i.scdn.co/image/ab67616d0000b273c1c8d2889455db6d03d309ed
   // PSYCHODRAMA
   // 4GrFuXwRmEBJec22p58fsD
@@ -12,6 +12,38 @@ const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId }) => {
   // Album
   // 2019-03-08
   const [hovered, setHovered] = useState(false)
+
+  if (playlist) {
+    return (
+      <Link
+        to={`/playlist/${albumId}`}
+        style={{ textDecoration: 'none' }}
+      >
+        <div
+          className='albumDisplay'
+          onMouseOver={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          <div className='albumImage'>
+            <img
+              src={image}
+              alt='Album Cover'
+              draggable='false'
+            />
+            {hovered &&
+              <div className='albumPlay'>
+                <PlayButton />
+              </div>
+            }
+          </div>
+          <div className='albumDesc'>
+            <h1>{title}</h1>
+            <p>By {name}</p>
+          </div>
+        </div>
+      </Link>
+    )
+  }
 
   return (
     <Link

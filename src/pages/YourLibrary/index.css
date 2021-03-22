@@ -6,12 +6,57 @@
 }
 
 .yourlibrary > h1 {
+  padding: 25px;
+  font-size: 25px;
   color: white;
 }
 
 .yourlibrary-body {
+  display: grid;
+  width: calc(100% - 497px);
+  grid-template-columns: repeat(8, 12.5%);
+  grid-column-gap: 59px;
   padding: 0px 25px;
-  display: flex;
-  flex-direction: column;
-  color: white;
+}
+
+.yourlibrary-playlist {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+@media only screen and (max-width: 1870px) {
+  .yourlibrary-body {
+    width: calc(100% - 438px);
+    grid-template-columns: repeat(7, 14.28%);
+  }
+}
+@media only screen and (max-width: 1690px) {
+  .yourlibrary-body {
+    width: calc(100% - 379px);
+    grid-template-columns: repeat(6, 16.66%);
+  }
+}
+@media only screen and (max-width: 1490px) {
+  .yourlibrary-body {
+    width: calc(100% - 320px);
+    grid-template-columns: repeat(5, 20%);
+  }
+}
+@media only screen and (max-width: 1288px) {
+  .yourlibrary-body {
+    width: calc(100% - 261px);
+    grid-template-columns: repeat(4, 25%);
+  }
+}
+@media only screen and (max-width: 1083px) {
+  .yourlibrary-body {
+    width: calc(100% - 202px);
+    grid-template-columns: repeat(3, 33.33%);
+  }
+}
+@media only screen and (max-width: 848px) {
+  .yourlibrary-body {
+    width: calc(100% - 143px);
+    grid-template-columns: repeat(2, 50%);
+  }
 }
