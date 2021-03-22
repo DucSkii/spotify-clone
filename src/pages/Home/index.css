@@ -23,3 +23,9 @@
 .home-content > h2 {
   padding: 25px 28px;
 }
+
+.home-playlists {
+  display: flex;
+  align-items: center;
+  padding: 0px 28px;
+}
