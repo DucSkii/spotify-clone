@@ -19,6 +19,14 @@
   overflow-x: hidden;
 }
 
+.songComponent-song {
+  text-decoration: none;
+}
+
+.songComponent-song:hover {
+  text-decoration: underline;
+}
+
 .songComponent-artist {
   font-size: 15px;
   overflow-x: hidden;

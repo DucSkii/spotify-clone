@@ -47,7 +47,11 @@ const SongComponent = ({ index, songName, songId, artists, album, albumId, durat
       <p style={{ width: '3%', textAlign: 'center', fontWeight: '700' }}>
         {hovered ? <PlayArrowIcon style={{ color: 'white' }} /> : index}
       </p>
-      <p style={{ width: '42%', maxWidth: '42%', color: 'white' }}>{songName}</p>
+      <p style={{ width: '42%', maxWidth: '42%', color: 'white' }}>
+        <Link className='songComponent-song' to={`/track/${songId}`} style={{ color: 'white' }}>
+          {songName}
+        </Link>
+      </p>
       <p style={{ width: '1%' }} />
       <div className='songComponent-artist' style={{ width: '24%', maxWidth: '24%' }}>
         {renderArtists()}
