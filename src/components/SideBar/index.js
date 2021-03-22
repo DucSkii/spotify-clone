@@ -26,7 +26,13 @@ const SideBar = (props) => {
   const renderPlaylists = () => {
     return playlists?.items?.map((playlist, index) => {
       return (
-        <div key={index} style={{ fontWeight: '700' }} className='sideBar-playlists-item'>{playlist.name}</div>
+        <Link
+          key={index}
+          to={`/playlist/${playlist.id}`}
+          className='sideBar-playlists-item'
+        >
+          <div style={{ fontWeight: '700' }} className='sideBar-playlists-item'>{playlist.name}</div>
+        </Link>
       )
     })
   }

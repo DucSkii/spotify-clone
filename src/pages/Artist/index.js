@@ -44,8 +44,6 @@ const Artist = () => {
     })
   }
 
-  console.log('albums', albums)
-
   return (
     <div className='artist'>
       <BackgroundGradient />

@@ -20,7 +20,6 @@ const SongPage = () => {
   useEffect(() => {
     setArtists([])
     spotify.getTrack(location.pathname.split('/')[2]).then(track => {
-      console.log('track', track)
       setAlbum(track.album)
       track.artists.forEach((artist) => {
         spotify.getArtist(artist.id).then(artist => {

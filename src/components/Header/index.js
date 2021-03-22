@@ -7,6 +7,7 @@ import './index.css'
 const Header = () => {
 
   const open = useSelector(state => state.general.open)
+  const user = useSelector(state => state.user.user)
   const backgroundColour = useSelector(state => state.general.backgroundGradient)
   const [style, setStyle] = useState({ opacity: '0' })
 
@@ -24,7 +25,7 @@ const Header = () => {
         <div style={{ width: '100%', height: '100%', backgroundColor: backgroundColour }} />
       </div>
       <div className={open ? 'header-accountButton-open' : 'header-accountButton'} >
-        <AccountButton username='ducvietdao' />
+        <AccountButton username={user.id} />
       </div>
     </div>
   )

@@ -59,6 +59,7 @@
   align-items: flex-end;
   margin-top: 8px;
   color:rgb(197, 197, 197);
+  white-space: nowrap;
 }
 
 .songDisplay-artists > p {

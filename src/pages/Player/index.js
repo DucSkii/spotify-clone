@@ -11,6 +11,7 @@ import Footer from '../../components/Footer'
 import SongPage from '../SongPage'
 import Artist from '../Artist'
 import AlbumPage from '../AlbumPage'
+import PlaylistPage from '../PlaylistPage'
 
 import './index.css'
 
@@ -40,6 +41,7 @@ const Player = ({ spotify }) => {
       >
         <Header />
         <Switch>
+          <Route path='/playlist' component={PlaylistPage} />
           <Route path='/album' component={AlbumPage} />
           <Route path='/artist' component={Artist} />
           <Route path='/track' component={SongPage} />

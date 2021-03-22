@@ -29,6 +29,11 @@
   user-select: none;
 }
 
+.sideBar-playlists-item {
+  color: grey;
+  text-decoration: none;
+}
+
 .sideBar-playlists-item:hover {
   color: white;
 }

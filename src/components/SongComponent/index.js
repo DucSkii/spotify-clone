@@ -29,7 +29,7 @@ const SongComponent = ({ index, songName, songId, artists, album, albumId, durat
           )
         } else {
           return (
-            <Link to={`/artist/${artist.id}`} className='songComponent-artist'>
+            <Link key={index} to={`/artist/${artist.id}`} className='songComponent-artist'>
               <p key={index}>{artist.name}</p>
             </Link>
           )
