@@ -14,13 +14,13 @@ _**The goal of this project was to make a spotify clone as closely identical as 
 - User can view artists page
 - User can view their own profile
 - User can view albums
+- Audio from tracks, playlist, albums and artists are playable
 
 **Project preview:**
 
 ![Alt Text](https://i.gyazo.com/2e2d18947651aac8576b4cb05c556ba9.png)
 
 _To view this project you must have a real spotify account._
-*The app has no audio features and the footer controls can only be used when the user has spotify open on any device.*
 
 This project was fully deployed using firebase,
 You can find a link to the deployed website here: https://map-project-4763e.web.app/
