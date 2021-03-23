@@ -5,6 +5,7 @@ import { setBackgroundGradient } from '../../redux/ducks/generalReducer'
 import AlbumDisplay from '../../components/AlbumDisplay'
 import BackgroundGradient from '../../components/BackgroundGradient'
 import { usePalette } from 'react-palette'
+import PlayButton from '../../components/PlayButton'
 
 import './index.css'
 
@@ -38,7 +39,9 @@ const Artist = () => {
             image={album.images[0].url}
             releaseDate={album.release_date}
             albumId={album.id}
-            albumType={album.album_type} />
+            albumType={album.album_type}
+            uri={album.uri}
+          />
         </div>
       )
     })
@@ -69,6 +72,13 @@ const Artist = () => {
         </div>
       </div>
       <div className='artist-body'>
+        <div className='artist-body-header'>
+          <PlayButton
+            dimensions='60px'
+            size='40px'
+            uri={artist.uri}
+          />
+        </div>
         <h1>Albums</h1>
         <div className='artist-albums'>
           {renderAlbums()}

@@ -22,13 +22,6 @@ export const closeDropdown = () => {
   }
 }
 
-export const setSpotifyOpen = (spotifyOpen) => {
-  return {
-    type: 'SET_SPOTIFY_OPEN',
-    spotifyOpen,
-  }
-}
-
 export const setBackgroundGradient = (backgroundGradient) => {
   return {
     type: 'SET_BACKGROUND_GRADIENT',
@@ -39,7 +32,6 @@ export const setBackgroundGradient = (backgroundGradient) => {
 const initialState = {
   open: false,
   coverOpen: false,
-  spotifyOpen: false,
   backgroundGradient: 'rgb(69,23,3)',
 }
 
@@ -50,11 +42,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         backgroundGradient: action.backgroundGradient,
-      }
-    case 'SET_SPOTIFY_OPEN':
-      return {
-        ...state,
-        spotifyOpen: action.spotifyOpen,
       }
     case 'SET_COVER_TRUE':
       return {

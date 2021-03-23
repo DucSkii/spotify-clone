@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
-const SongDisplay = ({ image, songName, artists, songId, artistId, artist = false }) => {
+const SongDisplay = ({ image, songName, artists, songId, artistId, artist = false, uri }) => {
 
   const [hovered, setHovered] = useState(false)
 
@@ -43,7 +43,7 @@ const SongDisplay = ({ image, songName, artists, songId, artistId, artist = fals
           <div className='songDisplay-image'>
             {hovered &&
               <div className='songDisplay-play'>
-                <PlayButton />
+                <PlayButton uri={uri} />
               </div>
             }
             <img
@@ -73,7 +73,7 @@ const SongDisplay = ({ image, songName, artists, songId, artistId, artist = fals
         <div className='songDisplay-image'>
           {hovered &&
             <div className='songDisplay-play'>
-              <PlayButton />
+              <PlayButton uri={uri} />
             </div>
           }
           <img

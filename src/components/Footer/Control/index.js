@@ -9,6 +9,7 @@ import PauseIcon from '@material-ui/icons/Pause'
 import RepeatIcon from '@material-ui/icons/Repeat'
 import RepeatOneIcon from '@material-ui/icons/RepeatOne'
 import { millisecondsToMinutes } from '../../../utils/millisecondsToMinutes'
+import Slider from '@material-ui/core/Slider'
 
 import './index.css'
 
@@ -124,6 +125,11 @@ const Control = ({ playing, spotify, shuffle, repeat, item, progress }) => {
       </div>
       <div className='control-time'>
         <p style={{ marginRight: '10px' }}>{millisecondsToMinutes(progress)}</p>
+        {/* <div style={{ width: '100%' }}>
+          <Slider
+            value={progress / item.duration_ms * 100}
+          />
+        </div> */}
         <div
           className='control-time-bar'
           onMouseOver={() => setHovered(true)}

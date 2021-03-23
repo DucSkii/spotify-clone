@@ -3,15 +3,22 @@ const initialState = {
   playlists: [],
   spotify: null,
   discover_weekly: null,
-  top_artists: null,
   playing: false,
   shuffle: false,
   repeat: 'off',
   volume: null,
   item: null,
-  progress: null,
+  progress: 0,
   recentlyPlayed: [],
   token: null,
+  uri: null,
+}
+
+export const setUri = (uri) => {
+  return {
+    type: 'SET_URI',
+    uri,
+  }
 }
 
 export const setRecentlyPlayed = (recentlyPlayed) => {
@@ -74,12 +81,6 @@ export const setDiscoverWeekly = (discover_weekly) => {
     discover_weekly,
   }
 }
-export const setTopArtists = (top_artists) => {
-  return {
-    type: 'SET_TOP_ARTISTS',
-    top_artists,
-  }
-}
 export const setPlaying = (playing) => {
   return {
     type: 'SET_PLAYING',
@@ -102,6 +103,11 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_URI':
+      return {
+        ...state,
+        uri: action.uri,
+      }
     case 'SET_RECENTLY_PLAYED':
       return {
         ...state,
@@ -146,11 +152,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         discover_weekly: action.discover_weekly,
-      }
-    case 'SET_TOP_ARTISTS':
-      return {
-        ...state,
-        top_artists: action.top_artists,
       }
     case 'SET_PLAYING':
       return {

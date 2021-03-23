@@ -54,6 +54,7 @@ const PlaylistPage = () => {
             artists={artistsArr}
             album={track.track.album.name}
             albumId={track.track.album.id}
+            uri={track.track.uri}
           />
         </div>
       )
@@ -105,6 +106,7 @@ const PlaylistPage = () => {
           <PlayButton
             dimensions='60px'
             size='40px'
+            uri={playlist.uri}
           />
         </div>
         <div className='playlistPage-songs'>

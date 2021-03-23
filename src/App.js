@@ -4,7 +4,6 @@ import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { getTokenFromUrl } from './spotify'
 import { useDispatch, useSelector } from 'react-redux'
-import { setSpotifyOpen } from './redux/ducks/generalReducer'
 import {
   setUser,
   setToken,
@@ -19,6 +18,7 @@ import {
   setVolume,
   setProgress,
   setRecentlyPlayed,
+  setUri,
 } from './redux/ducks/userReducer'
 import { closeDropdown } from './redux/ducks/generalReducer'
 
@@ -29,10 +29,8 @@ const App = () => {
   const dispatch = useDispatch()
   const token = useSelector(state => state.user.token)
   const open = useSelector(state => state.general.open)
-  const playing = useSelector(state => state.user.playing)
-  const progress = useSelector(state => state.user.progress)
-
-  const [count, setCount] = useState(0)
+  // const playing = useSelector(state => state.user.playing)
+  // const progress = useSelector(state => state.user.progress)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -57,26 +55,27 @@ const App = () => {
       })
 
       s.getMyCurrentPlaybackState().then(song => {
+        console.log('song', song)
         if (song.length === undefined) {
-          dispatch(setSpotifyOpen(true))
-          dispatch(setPlaying(song.is_playing))
-          dispatch(setItem(song.item))
-          dispatch(setShuffle(song.shuffle_state))
-          dispatch(setRepeat(song.repeat_state))
-          dispatch(setProgress(song.progress_ms))
+          dispatch(setUri(song.item.uri))
+          // dispatch(setItem(song.item))
+          // dispatch(setShuffle(song.shuffle_state))
+          // dispatch(setRepeat(song.repeat_state))
         } else {
           s.getMyRecentlyPlayedTracks().then(tracks => {
-            dispatch(setItem(tracks.items[0].track))
-            s.setRepeat('context')
-            s.setShuffle(false)
-            dispatch(setProgress(0))
+            console.log('tracks', tracks)
+            dispatch(setUri(tracks.items[0].track.uri))
+            // dispatch(setItem(tracks.items[0].track))
+            // s.setRepeat('context')
+            // s.setShuffle(false)
           })
         }
       })
-      
+
       s.getPlaylist("37i9dQZEVXcFWEafQgSYVF").then((response) =>
         dispatch(setDiscoverWeekly(response))
       )
+
 
       s.getMyDevices().then((res) => {
         const device = res.devices.filter(device => device.is_active === true)

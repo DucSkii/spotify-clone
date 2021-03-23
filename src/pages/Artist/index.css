@@ -85,6 +85,10 @@
   font-size: 25px;
 }
 
+.artist-body-header {
+  margin: 10px;
+}
+
 .artist-albums {
   display: grid;
   width: calc(100% - 447px);

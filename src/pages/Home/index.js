@@ -30,12 +30,13 @@ const Home = () => {
             playlistName={playlist.name}
             playlistId={playlist.id}
             playlistImage={image}
+            uri={playlist.uri}
           />
         </div>
       )
     })
   }
-
+  
   const renderTracks = () => {
     return discoverWeeklyTracks?.map((track, index) => {
       let artistsArr = []
@@ -57,6 +58,7 @@ const Home = () => {
             artists={artistsArr}
             album={track.track.album.name}
             albumId={track.track.album.id}
+            uri={track.track.uri}
           />
         </div>
       )

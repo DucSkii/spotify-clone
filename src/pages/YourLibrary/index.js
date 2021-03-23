@@ -20,6 +20,7 @@ const YourLibrary = () => {
             playlist={true}
             image={image}
             name={user.display_name}
+            uri={playlist.uri}
           />
         </div>
       )

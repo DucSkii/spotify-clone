@@ -27,6 +27,7 @@ const SongPage = () => {
             name: artist.name,
             id: artist.id,
             image: artist.images[0].url,
+            uri: artist.uri,
           }
           setArtists(state => [...state, artistObj])
         })
@@ -46,6 +47,7 @@ const SongPage = () => {
             artists={artist.name}
             artist={true}
             artistId={artist.id}
+            uri={artist.uri}
           />
         </div>
       )
@@ -55,7 +57,7 @@ const SongPage = () => {
   if (!album) {
     return null
   }
-
+  
   return (
     <div className='songPage'>
       <SongBanner
@@ -77,6 +79,7 @@ const SongPage = () => {
               releaseDate={album.release_date}
               albumId={album.id}
               albumType={album.album_type}
+              uri={album.uri}
             />
           </div>
         </div>

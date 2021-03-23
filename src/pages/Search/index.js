@@ -39,6 +39,7 @@ const Search = () => {
             artists={artistsArr}
             album={result.album.name}
             albumId={result.album.id}
+            uri={result.uri}
           />
         </div>
       )

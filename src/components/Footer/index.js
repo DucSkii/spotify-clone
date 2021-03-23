@@ -1,47 +1,72 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { setPlaying } from '../../redux/ducks/userReducer'
 import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
 import Volume from './Volume'
 import Control from './Control'
 import ExpandMoreOutlinedIcon from '@material-ui/icons/ExpandMoreOutlined'
+import SpotifyPlayer from 'react-spotify-web-playback'
 
 import './index.css'
 
 const Footer = ({ spotify }) => {
 
   const dispatch = useDispatch()
-  const songCover = useSelector(state => state.general.coverOpen)
-  const item = useSelector(state => state.user.item)
   const playing = useSelector(state => state.user.playing)
-  const shuffle = useSelector(state => state.user.shuffle)
-  const repeat = useSelector(state => state.user.repeat)
   const volume = useSelector(state => state.user.volume)
-  const progress = useSelector(state => state.user.progress)
+  const token = useSelector(state => state.user.token)
+  const uri = useSelector(state => state.user.uri)
+  // const item = useSelector(state => state.user.item)
+  // const [artists, setArtists] = useState([])
+  // const progress = useSelector(state => state.user.progress)
+  // const shuffle = useSelector(state => state.user.shuffle)
+  // const repeat = useSelector(state => state.user.repeat)
+  // const songCover = useSelector(state => state.general.coverOpen)
 
-  const [artists, setArtists] = useState([])
+  // useEffect(() => {
+  //   if (item) {
+  //     let artistArr = []
+  //     item?.artists?.forEach(artist => {
+  //       let artistObj = {
+  //         name: artist.name,
+  //         id: artist.id,
+  //       }
+  //       artistArr.push(artistObj)
+  //     })
+  //     setArtists(artistArr)
+  //   }
+  // }, [item, dispatch])
 
-  useEffect(() => {
-    if (item) {
-      let artistArr = []
-      item?.artists?.forEach(artist => {
-        let artistObj = {
-          name: artist.name,
-          id: artist.id,
-        }
-        artistArr.push(artistObj)
-      })
-      setArtists(artistArr)
-    }
-  }, [item])
-
-  if (!item) {
+  if (!token || !uri) {
     return null
+  }
+
+  const styles = {
+    bgColor: 'rgb(28, 28, 28)',
+    color: 'white',
+    sliderColor: 'rgb(158, 158, 158)',
+    sliderTrackColor: 'rgb(81, 81, 81)',
+    trackArtistColor: 'rgb(206, 206, 206)',
+    trackNameColor: 'white',
+    loaderColor: 'white',
+    sliderHandleColor: 'white',
+    height: '90px',
   }
 
   return (
     <div className='footer-container'>
-      <div className='footer'>
+      <SpotifyPlayer
+        styles={styles}
+        token={token}
+        uris={[uri]}
+        play={playing}
+        callback={state => {
+          dispatch(setPlaying(state.isPlaying))
+        }}
+        initialVolume={volume}
+      />
+      {/* <div className='footer'>
         <div className='footer-song'>
           <Song
             cover={item.album.images[0].url}
@@ -75,7 +100,7 @@ const Footer = ({ spotify }) => {
             <ExpandMoreOutlinedIcon fontSize='large' />
           </div>
         </div>
-      }
+      } */}
     </div>
   )
 }

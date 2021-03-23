@@ -53,7 +53,13 @@ const Profile = () => {
 
       return (
         <div className='profile-songs-item' key={index}>
-          <SongDisplay artists={artists} songName={song.track.name} image={song.track.album.images[0].url} songId={song.track.id} />
+          <SongDisplay
+            artists={artists}
+            songName={song.track.name}
+            image={song.track.album.images[0].url}
+            songId={song.track.id}
+            uri={song.track.uri}
+          />
         </div>
       )
     })

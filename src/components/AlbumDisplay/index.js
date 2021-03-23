@@ -4,13 +4,8 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
-const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId, playlist = false, name }) => {
-  // https://i.scdn.co/image/ab67616d0000b273c1c8d2889455db6d03d309ed
-  // PSYCHODRAMA
-  // 4GrFuXwRmEBJec22p58fsD
-  // 11
-  // Album
-  // 2019-03-08
+const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId, playlist = false, name, uri }) => {
+
   const [hovered, setHovered] = useState(false)
 
   if (playlist) {
@@ -32,7 +27,7 @@ const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId, playlist 
             />
             {hovered &&
               <div className='albumPlay'>
-                <PlayButton />
+                <PlayButton uri={uri} />
               </div>
             }
           </div>
@@ -63,7 +58,7 @@ const AlbumDisplay = ({ image, albumType, releaseDate, title, albumId, playlist 
           />
           {hovered &&
             <div className='albumPlay'>
-              <PlayButton />
+              <PlayButton uri={uri} />
             </div>
           }
         </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import './index.css'
 
-const PlaylistDisplay = ({ playlistName, playlistId, playlistImage }) => {
+const PlaylistDisplay = ({ playlistName, playlistId, playlistImage, uri }) => {
 
   const [hovered, setHovered] = useState(false)
 
@@ -27,7 +27,7 @@ const PlaylistDisplay = ({ playlistName, playlistId, playlistImage }) => {
         </div>
         {hovered &&
           <div className='playlistDisplay-button'>
-            <PlayButton />
+            <PlayButton uri={uri} />
           </div>
         }
       </div>
