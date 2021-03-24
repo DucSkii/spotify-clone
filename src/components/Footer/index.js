@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setPlaying } from '../../redux/ducks/userReducer'
+import { setPlaying, setProgress } from '../../redux/ducks/userReducer'
 import { closeCover } from '../../redux/ducks/generalReducer'
 import Song from './Song'
 import Volume from './Volume'
@@ -17,6 +17,7 @@ const Footer = ({ spotify }) => {
   const volume = useSelector(state => state.user.volume)
   const token = useSelector(state => state.user.token)
   const uri = useSelector(state => state.user.uri)
+  const offset = useSelector(state => state.user.offset)
   // const item = useSelector(state => state.user.item)
   // const [artists, setArtists] = useState([])
   // const progress = useSelector(state => state.user.progress)
@@ -37,6 +38,15 @@ const Footer = ({ spotify }) => {
   //     setArtists(artistArr)
   //   }
   // }, [item, dispatch])
+
+  const [footerUri, setFooterUri] = useState(null)
+
+  useEffect(() => {
+    setFooterUri(null)
+    setTimeout(() => {
+      setFooterUri(uri)
+    }, 100)
+  }, [offset, dispatch, uri])
 
   if (!token || !uri) {
     return null
@@ -59,12 +69,13 @@ const Footer = ({ spotify }) => {
       <SpotifyPlayer
         styles={styles}
         token={token}
-        uris={[uri]}
+        uris={[footerUri]}
         play={playing}
         callback={state => {
           dispatch(setPlaying(state.isPlaying))
         }}
         initialVolume={volume}
+        offset={offset}
       />
       {/* <div className='footer'>
         <div className='footer-song'>

@@ -58,7 +58,8 @@ const AlbumPage = () => {
             artists={artistsArr}
             album={album.name}
             albumId={album.id}
-            uri={track.uri}
+            uri={album.uri}
+            offset={index}
           />
         </div>
       )

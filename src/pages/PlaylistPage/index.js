@@ -54,7 +54,8 @@ const PlaylistPage = () => {
             artists={artistsArr}
             album={track.track.album.name}
             albumId={track.track.album.id}
-            uri={track.track.uri}
+            uri={playlist.uri}
+            offset={index}
           />
         </div>
       )

@@ -55,7 +55,6 @@ const App = () => {
       })
 
       s.getMyCurrentPlaybackState().then(song => {
-        console.log('song', song)
         if (song.length === undefined) {
           dispatch(setUri(song.item.uri))
           // dispatch(setItem(song.item))
@@ -63,7 +62,6 @@ const App = () => {
           // dispatch(setRepeat(song.repeat_state))
         } else {
           s.getMyRecentlyPlayedTracks().then(tracks => {
-            console.log('tracks', tracks)
             dispatch(setUri(tracks.items[0].track.uri))
             // dispatch(setItem(tracks.items[0].track))
             // s.setRepeat('context')

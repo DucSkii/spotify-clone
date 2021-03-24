@@ -12,6 +12,14 @@ const initialState = {
   recentlyPlayed: [],
   token: null,
   uri: null,
+  offset: 0,
+}
+
+export const setOffset = (offset) => {
+  return {
+    type: 'SET_OFFSET',
+    offset,
+  }
 }
 
 export const setUri = (uri) => {
@@ -103,6 +111,11 @@ export const setToken = (token) => {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_OFFSET':
+      return {
+        ...state,
+        offset: action.offset,
+      }
     case 'SET_URI':
       return {
         ...state,

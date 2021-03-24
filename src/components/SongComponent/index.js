@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { setUri, setPlaying } from '../../redux/ducks/userReducer'
+import { setUri, setPlaying, setOffset } from '../../redux/ducks/userReducer'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import { millisecondsToMinutes } from '../../utils/millisecondsToMinutes'
 import { Link } from 'react-router-dom'
 
 import './index.css'
 
-const SongComponent = ({ index, songName, songId, artists, album, albumId, duration, uri }) => {
+const SongComponent = ({ index, songName, songId, artists, album, albumId, duration, uri, offset = 0 }) => {
 
   const dispatch = useDispatch()
 
@@ -41,12 +41,12 @@ const SongComponent = ({ index, songName, songId, artists, album, albumId, durat
       })
     }
   }
-
   const handlePlayer = (id) => {
     if (id === 'link') {
       return null
     } else {
       dispatch(setUri(uri))
+      dispatch(setOffset(offset))
       setTimeout(() => {
         dispatch(setPlaying(true))
       }, 500)

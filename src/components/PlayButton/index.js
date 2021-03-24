@@ -1,7 +1,7 @@
 import React from 'react'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import { useDispatch } from 'react-redux'
-import { setUri, setPlaying } from '../../redux/ducks/userReducer'
+import { setUri, setPlaying, setOffset } from '../../redux/ducks/userReducer'
 
 import './index.css'
 
@@ -11,6 +11,7 @@ const PlayButton = ({ dimensions, size, uri }) => {
 
   const handlePlay = () => {
     dispatch(setUri(uri))
+    dispatch(setOffset(0))
     setTimeout(() => {
       dispatch(setPlaying(true))
     }, 500)
