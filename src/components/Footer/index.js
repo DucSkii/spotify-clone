@@ -18,26 +18,26 @@ const Footer = ({ spotify }) => {
   const token = useSelector(state => state.user.token)
   const uri = useSelector(state => state.user.uri)
   const offset = useSelector(state => state.user.offset)
-  // const item = useSelector(state => state.user.item)
-  // const [artists, setArtists] = useState([])
-  // const progress = useSelector(state => state.user.progress)
-  // const shuffle = useSelector(state => state.user.shuffle)
-  // const repeat = useSelector(state => state.user.repeat)
-  // const songCover = useSelector(state => state.general.coverOpen)
+  const item = useSelector(state => state.user.item)
+  const [artists, setArtists] = useState([])
+  const progress = useSelector(state => state.user.progress)
+  const shuffle = useSelector(state => state.user.shuffle)
+  const repeat = useSelector(state => state.user.repeat)
+  const songCover = useSelector(state => state.general.coverOpen)
 
-  // useEffect(() => {
-  //   if (item) {
-  //     let artistArr = []
-  //     item?.artists?.forEach(artist => {
-  //       let artistObj = {
-  //         name: artist.name,
-  //         id: artist.id,
-  //       }
-  //       artistArr.push(artistObj)
-  //     })
-  //     setArtists(artistArr)
-  //   }
-  // }, [item, dispatch])
+  useEffect(() => {
+    if (item) {
+      let artistArr = []
+      item?.artists?.forEach(artist => {
+        let artistObj = {
+          name: artist.name,
+          id: artist.id,
+        }
+        artistArr.push(artistObj)
+      })
+      setArtists(artistArr)
+    }
+  }, [item, dispatch])
 
   const [footerUri, setFooterUri] = useState(null)
 
@@ -48,7 +48,7 @@ const Footer = ({ spotify }) => {
     }, 100)
   }, [offset, dispatch, uri])
 
-  if (!token || !uri) {
+  if (!item || !token || !uri) {
     return null
   }
 
@@ -66,7 +66,7 @@ const Footer = ({ spotify }) => {
 
   return (
     <div className='footer-container'>
-      <SpotifyPlayer
+      {/* <SpotifyPlayer
         styles={styles}
         token={token}
         uris={[footerUri]}
@@ -76,8 +76,8 @@ const Footer = ({ spotify }) => {
         }}
         initialVolume={volume}
         offset={offset}
-      />
-      {/* <div className='footer'>
+      /> */}
+      <div className='footer'>
         <div className='footer-song'>
           <Song
             cover={item.album.images[0].url}
@@ -111,7 +111,7 @@ const Footer = ({ spotify }) => {
             <ExpandMoreOutlinedIcon fontSize='large' />
           </div>
         </div>
-      } */}
+      }
     </div>
   )
 }
