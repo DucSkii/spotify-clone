@@ -32,7 +32,8 @@ const Volume = ({ volume, spotify }) => {
     }
   }
 
-  const handleVolume = (event, newValue) => {
+  const handleVolume = (newValue) => {
+    console.log('newValue', newValue)
     dispatch(setVolume(newValue))
     spotify.setVolume(newValue)
   }
@@ -67,7 +68,7 @@ const Volume = ({ volume, spotify }) => {
         <div className='volumeBar'>
           <Slider
             value={volume}
-            onChange={handleVolume}
+            onChange={(e, val) => handleVolume(val)}
             style={{ color: `${hovered ? '#1db954' : 'rgb(158, 158, 158)'}` }}
           />
         </div>

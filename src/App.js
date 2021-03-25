@@ -57,15 +57,15 @@ const App = () => {
       s.getMyCurrentPlaybackState().then(song => {
         if (song.length === undefined) {
           dispatch(setUri(song.item.uri))
-          // dispatch(setItem(song.item))
-          // dispatch(setShuffle(song.shuffle_state))
-          // dispatch(setRepeat(song.repeat_state))
+          dispatch(setItem(song.item))
+          dispatch(setShuffle(song.shuffle_state))
+          dispatch(setRepeat(song.repeat_state))
         } else {
           s.getMyRecentlyPlayedTracks().then(tracks => {
             dispatch(setUri(tracks.items[0].track.uri))
-            // dispatch(setItem(tracks.items[0].track))
-            // s.setRepeat('context')
-            // s.setShuffle(false)
+            dispatch(setItem(tracks.items[0].track))
+            s.setRepeat('context')
+            s.setShuffle(false)
           })
         }
       })
