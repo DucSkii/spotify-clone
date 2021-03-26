@@ -20,7 +20,7 @@ _**The goal of this project was to make a spotify clone as closely identical as 
 
 ![Alt Text](https://i.gyazo.com/2e2d18947651aac8576b4cb05c556ba9.png)
 
-_To view this project you must have a real spotify account._
+_To view this project you must have a real spotify account. The footer component is an npm library that I forked to change some of the features and appearances to suit my preferences._
 
 This project was fully deployed using firebase,
 You can find a link to the deployed website here: https://map-project-4763e.web.app/
