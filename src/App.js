@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Login from './pages/Login'
 import Player from './pages/Player'
 import SpotifyWebApi from 'spotify-web-api-js'
@@ -7,16 +7,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   setUser,
   setToken,
-  setTopArtists,
   setPlaylists,
   setSpotify,
-  setPlaying,
-  setItem,
   setDiscoverWeekly,
-  setShuffle,
-  setRepeat,
   setVolume,
-  setProgress,
   setRecentlyPlayed,
   setUri,
 } from './redux/ducks/userReducer'
@@ -29,8 +23,6 @@ const App = () => {
   const dispatch = useDispatch()
   const token = useSelector(state => state.user.token)
   const open = useSelector(state => state.general.open)
-  // const playing = useSelector(state => state.user.playing)
-  // const progress = useSelector(state => state.user.progress)
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -57,15 +49,9 @@ const App = () => {
       s.getMyCurrentPlaybackState().then(song => {
         if (song.length === undefined) {
           dispatch(setUri(song.item.uri))
-          dispatch(setItem(song.item))
-          dispatch(setShuffle(song.shuffle_state))
-          dispatch(setRepeat(song.repeat_state))
         } else {
           s.getMyRecentlyPlayedTracks().then(tracks => {
             dispatch(setUri(tracks.items[0].track.uri))
-            dispatch(setItem(tracks.items[0].track))
-            s.setRepeat('context')
-            s.setShuffle(false)
           })
         }
       })
@@ -86,28 +72,6 @@ const App = () => {
       })
     }
   }, [token, dispatch])
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => playing && setCount(count + 1), 3e3)
-  //   return () => {
-  //     clearInterval(timer)
-  //     if (!playing) {
-  //       return null
-  //     }
-  //     s.getMyDevices().then(device => {
-  //       const volumeDevice = device.devices.filter(device => device.is_active === true)
-  //       dispatch(setVolume(volumeDevice[0].volume_percent))
-  //     })
-  //     s.getMyCurrentPlayingTrack().then(track => {
-  //       dispatch(setProgress(track.progress_ms))
-  //     })
-  //     if (progress <= 5000) {
-  //       s.getMyCurrentPlayingTrack().then(track => {
-  //         dispatch(setItem(track.item))
-  //       })
-  //     }
-  //   }
-  // })
 
   const toggleDropdown = (e) => {
     if (e.target.parentNode.id) {

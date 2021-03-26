@@ -4,11 +4,7 @@ const initialState = {
   spotify: null,
   discover_weekly: null,
   playing: false,
-  shuffle: false,
-  repeat: 'off',
   volume: null,
-  item: null,
-  progress: 0,
   recentlyPlayed: [],
   token: null,
   uri: null,
@@ -36,31 +32,10 @@ export const setRecentlyPlayed = (recentlyPlayed) => {
   }
 }
 
-export const setProgress = (progress) => {
-  return {
-    type: 'SET_PROGRESS',
-    progress,
-  }
-}
-
 export const setVolume = (volume) => {
   return {
     type: 'SET_VOLUME',
     volume,
-  }
-}
-
-export const setRepeat = (repeat) => {
-  return {
-    type: 'SET_REPEAT',
-    repeat,
-  }
-}
-
-export const setShuffle = (shuffle) => {
-  return {
-    type: 'SET_SHUFFLE',
-    shuffle,
   }
 }
 
@@ -95,12 +70,7 @@ export const setPlaying = (playing) => {
     playing,
   }
 }
-export const setItem = (item) => {
-  return {
-    type: 'SET_ITEM',
-    item,
-  }
-}
+
 export const setToken = (token) => {
   return {
     type: 'SET_TOKEN',
@@ -126,25 +96,10 @@ export default (state = initialState, action) => {
         ...state,
         recentlyPlayed: action.recentlyPlayed,
       }
-    case 'SET_PROGRESS':
-      return {
-        ...state,
-        progress: action.progress,
-      }
     case 'SET_VOLUME':
       return {
         ...state,
         volume: action.volume,
-      }
-    case 'SET_REPEAT':
-      return {
-        ...state,
-        repeat: action.repeat,
-      }
-    case 'SET_SHUFFLE':
-      return {
-        ...state,
-        shuffle: action.shuffle,
       }
     case 'SET_USER':
       return {
@@ -170,11 +125,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         playing: action.playing,
-      }
-    case 'SET_ITEM':
-      return {
-        ...state,
-        item: action.item,
       }
     case 'SET_TOKEN':
       return {
